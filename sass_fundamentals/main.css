@@ -1,0 +1,54 @@
+a {
+  color: "red"; }
+
+div {
+  padding: 5px; }
+  div .big {
+    content: "huge!"; }
+
+.blue {
+  color: blue;
+  background-image: url("images/blue.jpg"); }
+
+.red {
+  color: red;
+  background-image: url("images/red.jpg");
+  border: 1px solid black; }
+
+.green {
+  color: green;
+  background-image: url("images/green.jpg"); }
+
+.gray {
+  color: gray;
+  background-image: url("images/gray.jpg"); }
+
+a {
+  color: red; }
+
+.box {
+  width: 20px;
+  height: 20px;
+  background: blue;
+  display: block; }
+
+.new-box {
+  width: 10px;
+  height: 10px;
+  background: black;
+  display: block; }
+
+.radiohead.thom {
+  background: url("images/radiohead/thom.jpg"); }
+
+.radiohead.jonny {
+  background: url("images/radiohead/jonny.jpg"); }
+
+.radiohead.colin {
+  background: url("images/radiohead/colin.jpg"); }
+
+.radiohead.phil {
+  background: url("images/radiohead/phil.jpg"); }
+
+.nin.trent {
+  background: url("images/nin/trent.jpg"); }
