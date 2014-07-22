@@ -33,12 +33,3 @@ $overlay.click(function(event){
   // Hide the overlay
   $overlay.hide();
 });
-
-
-
-
-
-
-
-
-
