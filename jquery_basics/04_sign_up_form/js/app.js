@@ -18,12 +18,19 @@ function arePasswordsMatching() {
 }
 
 function usernamePresent() {
-  console.log($username.val().length > 0);
   return $username.val().length > 0;
 }
 
 function canSubmit() {
   return isPasswordValid() && arePasswordsMatching() && usernamePresent();
+}
+
+function usernameEvent() {
+  if (usernamePresent()) {
+    $username.next().hide();
+  } else {
+    $username.next().show();
+  }
 }
 
 function passwordEvent() {
@@ -53,7 +60,7 @@ function enableSubmitEvent() {
 }
 
 //When event happens on username input
-$username.focus(usernamePresent).keyup(usernamePresent);
+$username.focus(usernameEvent).keyup(usernameEvent);
 
 //When event happens on password input
 $password.focus(passwordEvent).keyup(passwordEvent).keyup(confirmPasswordEvent).keyup(enableSubmitEvent);
