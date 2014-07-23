@@ -1,0 +1,1457 @@
+ _______   ______  ______
+|	  |	  |
+|	  |_____  |_____
+|	  	|	|
+|		|	|
+|_______  ______| ______|
+
+
+****************************************
+**************Selectors*****************
+****************************************
+
+Adjacent Sibling:
+h2 + p
+
+All Siblings:
+h2 ~ p
+
+Attribute:
+a[class]
+
+Contains attribute value:
+a[class~="baz"]
+
+************************************
+********Advanced Selectors**********
+************************************
+
+*****Substring Matching Attribute Selectors:
+
+Begins With:
+a[href^="http://"] {
+  color: green;
+}
+
+a[href^="mailto:"] {
+  color: white;
+  background-color: red;
+}
+
+Ends With:
+a[href$=".pdf"] {
+  background: url('images/pdf.png') no-repeat 0 2px;
+  padding-left: 25px;
+}
+
+a[href$=".doc"] {
+  background: url('images/doc.png') no-repeat 0 2px;
+  padding-left: 25px;
+}
+
+Contains:
+img[src*="sky"] {
+  border: 5px solid #000;
+}
+
+*****Structural Pseudo Classes
+
+None Zero Indexed:
+li:nth-child(even) {
+  color: #FFF;
+  background-color: #000;
+}
+
+li:nth-child(odd) {
+  color: #FFF;
+  background-color: #000;
+}
+
+li:nth-child(3) {
+  color: #FFF;
+  background-color: #000;
+}
+
+-----------
+
+li:nth-child(an+b) {
+  color: #FFF;
+  background-color: #000;
+}
+
+b is the offset value - starting value
+a determines cycle of elements to select after first one is selected
+
+Starts from the end:
+
+li:nth-last-child(3n+1) {
+  color: #FFF;
+  background-color: #000;
+}
+
+Selects element based on position within parents list of child elements
+of the same type
+
+div:nth-of-type(2) {
+  background-color: blue;
+}
+
+div:nth-last-of-type(1) {
+  background-color: blue;
+}
+
+------------
+Only element of it's type within a parent element
+
+p:only-of-type {
+  color: blue;
+}
+
+
+*******More Pseudo Classes
+
+Selects element that is the root of the document
+Usually html tag
+
+:root {
+  background-color: blue;
+}
+
+Style elements based on the URL
+:target {
+  color: #FFF;
+  background-color: #EA2E49;
+}
+
+Elements that have no content
+:empty {
+  background-color: red; 
+}
+
+*** UI Element States
+:enabled {
+  background-color: orange;
+}
+
+:disabled {
+  background-color: #ccc;
+}
+
+input[type="radio"]:checked + label {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+input:not([type="submit"]) {
+  border: 2px solid #000;
+  background-color: white;
+}
+
+*****Pseudo Elements
+
+Elements: Select things that don't always exist as elements or have unique characteristics
+Classes: Select HTML elements that could have classes added to them
+
+.intro:first-line {
+  font-weight: bold;
+  color: #77c4d3;
+}
+
+.intro:first-letter {
+  font-size: 3em;
+  padding: 0 10px;
+  margin: 10px 15px 0 0;
+  background-color: #FFF;
+  float: left;
+}
+
+**Generated Content
+
+.phone:before {
+  content: "\2706";
+  font-size: 1.5em;
+}
+
+.pdf:after {
+  content: attr(href);
+  padding-left: 10px;
+  color: #FFF;
+}
+
+.pdf:before {
+  content: url(pdf.png);
+  margin-right: 10px;
+}
+
+**Generate Shape Before Text:
+
+h1:before {
+  content: " ";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: #ea2a49;
+  border-radius: 20px;
+  margin: 15px 15px 0 0;
+}
+************************************
+*********Values and Units***********
+************************************
+
+******Absolute Length Units
+**Not Intended for Web or Screen Design
+Centimeter
+Millimeter
+Inches
+
+**Used generally for print media
+Picas
+Points
+
+**One point on the virtual grid
+Pixels
+
+Will always remain the same regardless of browser size or resolution
+
+1/96 of 1 inch
+
+*******Relative Length Units
+Based on the height of the font's "x" character
+p {
+  font-size: 3ex;
+}
+
+Em is equal to the computed value of the font-size of the element in which it is used
+
+1em = 16px if no other value for font is declared
+
+There is also REM:
+Avoid compounding effect of using multiple sizes
+
+**Viewport size units
+
+vw, vh, vmin
+
+1% to the size of the viewport
+
+*******Numeric and Textural Values
+
+*auto - width, height, z-index
+
+allowing the browser to automatically calculate
+
+*inherit - property should be the same as parent element
+
+*initial - reverts to base value
+	-moz-initial
+
+*content - need escape characters if using a string \" or \\
+
+*url reference
+	background-image: url();
+
+*Integers and Numbers
+	Margins, Text Indent, Absolute Position Properties accept NEGATIVE values
+
+*Percentages
+	computed to a relative value
+	Width, Margin, Padding, Font-Size
+
+************Color Values
+
+Keywords:
+	red, green, blue, yellow, orange, black, lightgray, lightblue, tomato, sandybrown
+	http://www.w3.org/TR/css3-color/#svg-color
+
+Hexadecimal Notation:
+	#XXXXXX
+	
+	#ff0033 is the same as #f03
+
+RGB Method:
+	rgb(65, 105, 255);
+	rgba(65, 105, 255, 0.8);  --last value stands for the opacity
+
+HSL Method:
+	hue, saturation, lightness
+	hsl(240, 70%, 55%);
+
+HSLa Method - Same as RGBa alpha value
+
+************************************
+***** Text, Fonts, and Lists *******
+************************************
+
+***Font Properties
+font-family - specifies type face
+	specific font - Verdana, Arial, Helvetica
+	family - serif, sans-serif, monospace
+
+Font Stack
+	fonts a browser can cycle through
+	ex. Verdana, Georgia, Times New Roman, Arial
+	ex. Georgia, Times, serif;
+
+	multiple worded font-family needs quotes - "Times New Roman"
+
+font-weight:
+	bold, normal
+	lighter and bolder than current font-weight
+
+font-size:
+	small, medium, large
+	larger, smaller
+	px
+	percentages are relative to parent font size
+	em - based around percentages
+
+font-style:
+	normal, italic, oblique
+
+font-variant:
+	displayed in small caps or upper case
+	small-caps,
+
+font:
+	style variant weight size family;
+
+***Text Properties
+
+line-height: specifies vertical spacing between lines of text
+
+text-align: controls horizontal alignment of text
+	left, right, center, justify
+
+text-decoration:
+	underline, none, overline, line-through
+
+text-indent:
+	text-indent: 1.5em; -first line 
+
+text-tranform:
+	uppercase, lowercase, capitalize, 
+
+white-space:
+	normal
+	nowrap (goes to single line)
+	pre (as written in markup)
+	pre-wrap....?
+
+***More Text Properties
+
+text-shadow: <horiz-offset> <ver-offset> <blur radius> <color>;
+	shadows can be stacked on top of one another
+	shadows on left are on top
+
+overflow:
+	hidden;
+	text-overflow: clip;
+		other values - ellipsis;
+
+word-wrap:
+	used for links
+	break-word;
+
+***List Styles
+
+list-style-type:
+	square
+	circle
+	decimal-leading-zero
+	none
+
+list-style-position:
+	outside
+	inside
+
+list-style-image:
+	url('marker.png'); - use background: and style-type none instead
+
+list-style: <type> <position> <image> (ANY ORDER!!!);
+
+
+************************************
+********** The Box Model ***********
+************************************
+
+margin
+	border
+		padding
+			content
+		padding
+	border
+margin
+
+Block or Inline Elements
+
+Block:
+	full width based on parent container
+	newline before and after
+	divs, h's, p, li, ul
+
+Inline:
+	do not force new lines
+	images
+	span
+	anchor
+	strong
+
+Border Styles
+
+border-width: medium, thick, thin, 1px
+	negative and percentages not allowed
+	can accept up to 4 values for different sides
+
+border-style:
+	style of borders
+	solid, none, dotted, dashed
+	accepts 4 values so each side can have a different style
+
+border-color:
+	keyword or hex
+	border-top-color
+	border-right-color
+	border-left-color
+	border-bottom-color
+	
+border: <width> <style> <color>;
+
+**Width, Height, and Overflow Properties
+
+display:
+	none, block, inline, inline-block
+	
+	none - turn of display, doesn't take up any space
+	block - default for block - line before and after
+	inline - default for inline - within flow of line
+	inline-block - 
+
+	width, margin only allows for block elements so inline-block
+		negative top and bottom margins take no affect on inline-block elements
+
+visibility:
+	element is invisible but still takes up full space
+	hidden, visible
+
+width - height:
+	px, em, %
+
+height only changes if parent element has a height declared
+
+box-sizing:
+	border-box - forces padding and border into width and height of actual box
+-moz-box-sizing: border-box
+
+min-width: smallest size a box can be displayed
+max-width: largest size a box can be displayed
+	
+min-height / max-height: ...
+
+overflow:
+	visible - rendered outside containing box
+	hidden - hides content outside of containing box
+	scroll - adds scrollbar to containing box if content flows outside of box
+	auto - provides scrollbars only when needed
+
+***Floats
+
+Render side by side to each other
+	float: left, right, none;
+
+img {
+  float: right;
+}
+
+block elements flow around floated elements
+
+floats remove elements from normal document flow
+
+if parent element contains floated children - the parent will only be the height of
+none floated elements
+
+clear - forces the elements/floats to be contained
+	clear:
+		left, right, both, none;
+
+OTHER METHOD! - apply to parent container
+	overflow: hidden (or auto); - simple effective way of clearing floats
+		scrollbars may appear in certain browsers
+
+CLEARFIX! or MICRO CLEARFIX
+
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+}
+
+.group:after {
+  clear: both;
+}
+
+.group {
+  *zoom: 1;
+}
+
+***Positioning Properties
+
+position:
+	static, relative, absolute, fixed
+
+	static - default - according to normal flow of the page
+	relative - changes an element without influencing layout of other elements
+		offsets to original position
+		left, right, top, bottom - affects position of where position would be
+	absolute - element compeltely removed from document flow - no longer affects position of other elements
+		top, right, bottom, left - based on viewport or parent relative div
+	fixed - similar to absolute - always stay fixed in same location regardless of scroll
+		positioning context will never change even if parent is relative
+
+z-index:
+	adds third dimension to page - higher values sit on top of lower values
+
+CANT APPLY POSITION AND FLOATS TO ELEMENTS AT SAME TIME!!!
+
+
+************************************
+***** Backgrounds and Borders ******
+************************************
+
+***Background Properties
+	background-color:
+		predefined color names
+		hex
+		rgb, rgba
+		hsl, hsla
+	
+	background-image: -renders above color
+		url();
+		generally is repeated and tiled
+	background-repeat:
+		default is repeat
+		repeat-x
+		repeat-y
+		no-repeat
+	background-position: <x-axis> <y-axis>
+		left, right, center
+		top, bottom, center
+	background-attachment:
+		scroll - scrolls within container - default
+		fixed - keeps image fixed to viewport - doesn't scroll with page
+		local - ... keeps content relative to background even when scrolling within content
+
+	background: <color><image><repeat><attachment><position>;
+
+***Border Radius Properties
+	border-radius: <top-left><top-right><bottom-right><bottom-left>;
+		negative values are not allowed
+		formed from a radius of a quater-circle
+	
+	border-top-left-radius: 80px 40px --two values create an ellipse
+		80 is the x radius value
+		40 is the y radius value
+	
+	border-radius: 30px (top-left and bottom-right) 40px (top-right and bottom-left)
+	
+	border-radius: 30px 10px 40px (top-left (top-right/bottom-left) bottom-right)
+
+	border-radius: 50px 100px / 25px 50px;
+
+	
+	border-radius: 50%; --gives us a perfect circle as long as width and height are the same
+
+***Box Shadow
+	box-shadow: <horiz-offset> <vert-offset> <blur> <spread radius> <color> <inset value>
+		inset - pushes shadow into the div element giving it a soft border
+
+		multiple shadows can be applied with commas
+			first is on top
+			last will be farthest on the bottom
+
+***Border images
+	border-image-source:
+				-slice:
+				-width:
+				-outset:
+				-repeat:
+
+	All are heavily reliant on the border-image-width property
+
+	.box {
+		border: 30px solid #70979A;
+		border-image-source: url('img/border.png');
+		border-image-slice: <top><right><bottom><left>; //9 space tic tac toe grid
+	}
+
+	make sure slice is the same as the border width
+		border-image-slice: 30;
+
+	middle image is not shown by default
+	unless we had "fill" value
+		border-image-slice: 30 fill;
+
+	border-image-repeat: determines how they are tiled
+		stretch - stretches each piece of grid to fit
+		repeat - doesn't stretch but.. could cause images to be cut off
+		round - fixes issues of repeat
+		space - distributes extra white space - not supported by any browser
+
+	border-image-width: sets how large border image should be
+		1 (represents the 30 pixel value)
+		pixel values can also be used
+
+	border-image-outset:
+		how far out of box model should it be rendered
+		2 (renders the 60pixels outside of border width)
+
+	Shorthand:
+		border-image: url('img/border.png') 30 fill round;
+
+	Things to keep in mind:
+		Always define fallback border styles
+		Border styles are applied before border-image properties
+		Keep slice and width the same
+
+	http://www.border-image.com
+
+***Advanced Backgrounds
+
+	-Just use a comma between multiple background values
+	
+	background: url('img/smiley.png') no-repeat right top, url('img/pencil.png') no-repeat left bottom, url('img/texture.jpg') #d6bb80;
+
+	-First image listed will be the top image layer
+
+	background-size: 200px, 250px, 110%; --values follow order of layered background images
+
+		-second values: 250px 200px (width and height)
+		-keyword values: cover, contain
+			cover: fills entire area --make sure height is set to 100%
+			contain: entire image fits inside background area --maintains resolution
+
+	background-clip: --sets background painting area
+		border-box -extends through border
+		padding-box -extends through padding
+		content-box -extends through content
+
+	background-origin: --determines how a background position is calculated
+		border-box -relative to border edge
+		padding-box -relative to padding edge
+		content-box -relative to content edge
+
+************************************
+********** Web Typography **********
+************************************
+
+How does text match other fonts?
+Does it match the mood you're looking for?
+
+Responsive Text:
+	change font sizes to em instead of pixels
+		target / context
+
+Considering Vertical Rhythm:
+	basehold.it - Renders a baseline grid over our page
+	change line-height and margins to achieve vertical rhythm
+
+General rule
+	Keep lines at 45-75 characters per line
+
+Web Fonts:
+	fontsquirrel.com
+	theleagueofmoveabletype.com
+	www.google.com/webfonts
+
+Icon Fonts:
+	symbolset.com
+	pictos.cc
+	icomoon.io
+	
+	--may cause aliasing in the icon font
+	-webkit-font-smoothing: antialiased;
+
+Ligatures:
+	--used to improve appearance of text - letters that are too close together
+	
+	-webkit-font-feature-settings: "liga", "dlig";
+		liga - common ligatures
+		dlig - discretionary ligatures - non standard ligatures and word ligatures
+
+Enhancing Typography:
+	Line Rules:
+		should be subtle
+		should be closer to text they correspond too
+	Never use faux italic/bolding - avoid <b> and <i> - use <strong> and <em>
+
+	Tracking:
+		letter-spacing
+		headings may benefit from tighter tracking
+	
+	Rag: Uneven side of the text
+		Keep them relatively balanced
+		No way to prevent them, but there are ways to avoid them
+		
+		Adjust text to be justified - watch out for RIVERS (large gaps 
+			between words)
+
+	Hanging Punctuation:
+		Requires characters outside of element
+			Lists
+			Block Quotes
+		hanging-punctuation property: -available soon
+
+	Special Characters:
+		&ldquo; - beginning quote
+		&rdquo; - ending quote
+		&ndash; - indicate range 1 - 10
+		&mdash; - break in thought
+		&hellip; - ellipses
+		&amp;	- ampersand
+
+		www.impressivewebs.com/html-entity-reference-common/
+		
+		dev.w3.org/html5/html-author/charref
+
+************************************
+********** CSS Gradients ***********
+************************************
+
+Linear Gradients
+	Top to Bottom
+	.box {
+		width: 500px;
+		height: 500px;
+		background: -webkit-linear-gradient(orange, darkblue); /* top to bottom */
+	}
+
+	Reverse the Colors:
+		background: -webkit-linear-gradient(bottom, orange, darkblue);
+
+	Diagonal:
+		background: -webkit-linear-gradient(bottom right, orange, darkblue);
+
+	More Control of Gradient Angle: 0 is L/R 90 is T/B
+		background: -webkit-linear-gradient(0deg, orange, darkblue);
+
+	Specifying Color Stops:
+		background: -webkit-linear-gradient(orange, darkblue, green, purple); /*even color transitions*/
+
+	Control Position of any stop:
+		background: -webkit-linear-gradient(orange, darkblue, green 50%, purple);
+			can be a percentage or a pixel length
+	
+	Sharp Color Stop:
+		background: -webkit-linear-gradient(orange, darkblue 100px, green 100px, purple);
+
+Linear Gradients - New Syntax
+	background: linear-gradient(to right, orange, darkblue, purple);
+
+	Reverse:
+	background: linear-gradient(to left, orange, darkblue, purple);
+
+	Other directions:
+		to top left
+		to top right
+		to bottom left
+		to bottom right
+
+	Degree Angles:
+		Old - 0deg goes from left to right
+		New - 0deg goes from bottom to top
+
+	All Vendor prefixes:
+		-webkit-linear-gradient();
+		-moz-linear-gradient();
+		-0-linear-gradient();
+		linear-gradient();
+
+Radial Gradients:
+	--start from a center point and smoothly spread out in a circular or elliptical shape
+
+	Centered and Completely fills - takes shape of container
+	background: -webkit-radial-gradient(#e3a112, #00018f);
+
+	Circle:
+	background: -webkit-radial-gradient(circle, orange, darkblue);
+
+	Position:
+	background: -webkit-radial-gradient(150px/*horiz*/ 50px/*vert*/, circle, orange, darkblue);
+
+	background: -webkit-radial-gradient(150px/*horiz*/, circle, orange, darkblue);
+
+	Specify Size of Gradient Ending Shape:
+	background: -webkit-radial-gradient(circle closest-side, orange, darkblue);
+
+	Closest Corner
+	background: -webkit-radial-gradient(75% 25%, circle closest-corner, orange, darkblue);
+
+	Farthest:
+		farthest-side
+		farthest-corner
+
+	Multiple Colors
+	background: -webkit-radial-gradient(75% 25%, circle, closest-corner, orange, darkblue 30%, green 120%);
+
+	Cool Effects: 3D sphere
+		.box{
+			width: 300px;
+			height: 300px;
+			border-radius: 50%;
+			margin: 35px auto;
+			background: -webkit-radial-gradient(65% 15%, circle, aqua, darkblue);
+		}
+
+Radial Gradients - New Syntax
+	
+	Prefixed Syntax:
+		<position>,<shape> <size>
+	
+	Unprefixed Syntax:
+		<shape> <size> at <position>
+
+	background: radial-gradient(circle at right, aqua, darkblue);
+	
+	background: -webkit-radial-gradient(30% 15%, circle farthest-side, aqua, darkblue);
+	background: -moz-radial-gradient(30% 15%, circle farthest-side, aqua, darkblue);
+	background: -o-radial-gradient(30% 15%, circle farthest-side, aqua, darkblue);
+	background: radial-gradient(circle farthest-side at 30% 15%, aqua, darkblue);
+
+Transparent Gradients:
+
+	body {
+		background: -webkit-linear-gradient(hsl(218, 51%, 32%), transparent);
+	}
+	
+	-makes gradient appear in small intervals
+	
+	html { height: 100% }
+
+	body {
+		background: -webkit-linear-gradient(hsl(195, 51%, 44%), rgba(255,255,255,0) 75%),
+			url('bg.jpg');
+		background-size: cover;
+	}
+	
+Repeating Gradients:
+	
+	Repeating Linear Gradient:
+
+	background: -webkit-repeating-linear-gradient(rgba(58,122,187,.8) 20px, rgb(43,79,115) 50px);
+		-spaced out between the color stops of the colors 50-20 = 30px
+		-gives a hard edge
+
+	background: -webkit-repeating-linear-gradient(rgba(58,122,187,.8) 20px, rgb(43,79,115) 50px, rgba(58,122,187,.8) 70px);
+
+	background: -webkit-repeating-linear-gradient(left, rgba(58,122,187,.8) 20px, rgb(43,79,115) 50px);
+
+	background: -webkit-repeating-linear-gradient(-45deg, rgba(58,122,187,.8) 20px, rgb(43,79,115) 50px);
+
+	Repeating Radial Gradient:
+	background -webkit-repeating-radial-gradient(3 values);
+		-creates a ripple effect
+		-work the same as radial gradients
+
+
+************************************
+* Flexbox and Multi-Column Layout **
+************************************
+
+Flexbox:
+	Flex Container:
+		Flex Items are inside a Flex Container
+		Flex Lines go left to right/top to bottom on which the Flex Items lay
+
+	Main and Cross Axis:
+		Main Axis: horizontal axis of flex container
+		Cross Axis: vertical axis of flex container
+
+	Flex Formatting Context:
+		.nav {
+			display: -webkit-flex; --makes nav the flex container
+			-webkit-flex-direction: row; --default value --other values row-reverse; column; column-reverse;
+			-webkit-justify-content: space-between; -adjusts space between each item --other values flex-end; center;
+		}
+		.nav li:last-child {
+			margin-left: auto;
+		}
+
+		Items do overflow the container
+		To remedy:
+		.nav {
+			-webkit-flex-wrap: wrap; --creates a multiline container
+		}
+
+	Flex Part 2:
+	
+		.nav li {
+			display: -webkit-flex;
+			-webkit-flex-grow: 1; --represents ratio of free space 1:evenly distributed, flex
+		}
+		
+		.col { -child of main
+			-webkit-flex: 1;
+		}
+		
+		.col-c {
+			-webkit-flex: 3;
+			-webkit-order: -1;
+		}
+	
+		.col-b {
+			-webkit-align-self: center; --flex-end:aligns to end --default - stretch:same height
+		}
+		
+		@media screen and (max-width: 999px) {
+			.main {
+				-webkit-flex-direction: column;
+			}
+		}
+
+Multi Column Layout:
+	.main {
+		-webkit-column-count: 3; --content always gets split in between 3 columns
+		-webkit-column-gap: 3em; --columns have even gaps between them
+		-webkit-column-rule-width: 2px; --border
+		-webkit-column-rule-style: dotted; --border
+		-webkit-column-rule-color: #070641; --border
+		
+		-webkit-column-rule: <width> <style> <color>;
+		
+		-webkit-column-width: 250px;
+		
+		-webkit-columns: 250px 3; --column width and count shorthand
+	}
+	img {
+		display: block;
+		margin: 1.5em 0;
+		max-width: 100%;
+	}
+	h1 {
+		-webkit-column-span: all;
+	}
+
+************************************
+***** Transitions & Tranforms ******
+************************************
+
+Transitions:
+	.box:hover {
+		background: lightcoral;
+		border-radius: 50%;
+		transition-property: background, border-radius; --other values: all (also the default)
+		transition-duration: .3s, 1s;
+	}
+	Full List of Transitional Properties:
+		www.w3.org/TR/css3-transitions/#animatable-properties
+
+	To stop the snap back to original, we need to add a transition to the original rule
+	
+	Basic transition both in and out, transition duration is only needed on original selector
+
+Transitions Part 2:
+	.wrap:hover .box { //descendent selector so the .box transition when hovering over .wrap
+		background: #F08080;
+		margin-left: 75%;
+	}
+	.box {
+		transition-duration: 1s;
+	}
+
+	Timing Values:
+		www.w3.org/TR/css3-transitions/#transition-timing-function-property
+	transition-timing-function: value from above url;
+
+	Cubic-Bezier Timing Functions:
+		P0 - P1 - P2 - P3
+		
+		cubic-bezier(P1x, P1y, P2x, P2y) //another option for timing function
+
+	transition-delay: 1s; //will delay on hover
+
+	Transition Shorthand:
+	
+	transition: <property><duration><timing function><delay>;
+
+	-webkit-
+	-moz-
+	-o-
+	
+	www.cubic-bezier.com
+
+Transforms:
+2D:
+	<div class="wrap">
+		<div class="box">
+			<img class="mike" src="mike.png" />
+		</div>
+	</div>
+	
+	-webkit-transform: rotate(45deg); //clockwise 45 degrees
+
+	-webkit-transform: rotate(400grad); //360deg
+
+	-webkit-transform: rotate(3.14rad); //radians -180deg 
+
+	-webkit-transform: rotate(.5turn); //180degrees
+	
+	.mike{
+		transition: 1s ease-in-out;
+	}
+	.wrap:hover .mike {
+		-webkit-transform: rotate(2turn);
+		-webkit-transform-origin: 50% 50%; //default
+		-webkit-transform-origin: 100% 100%; //puts pivot in bottom right corner
+		-webkit-transform-origin: top right;
+
+	Scale():
+		-webkit-transform: scaleX(1.5); //stretches image on x-axis
+		-webkit-transform: scaleY(1.5); //stretches image on y-axis
+		-webkit-transform: scale(1.5); //stretches both axis
+	Skew():
+		-webkit-transform: skewX(45deg); //skews on x axis 45 deg
+		-webkit-transform: skewY(45deg); //skews on y axis 45 deg
+	Translate(): smoother animations
+		-webkit-transform: translateX(200px); //left to right 200px
+		-webkit-transform: translateX(-200px); //right to left 200 px
+		-webkit-transform: translateX(100%); //100% left to right of element size
+		-webkit-transform: translateY(100%); //moves down by images height
+		-webkit-transform: translate(300px, 100px); //moves 300px left and 100px down
+		-webkit-transform: translate(-200%, 80%); //moves left 200% and down 80%
+	Combine Transform:
+		-webkit-transfrom: scale(1.5) rotate(360deg) translateX(50%);
+	}
+	
+	-webkit-
+	-moz-
+	-ms-
+	-o-
+
+3D:
+	<div class="wrap>
+		<div class="side-a"></div>
+		<div class="side-b"></div>
+	</div>
+	body {
+		-webkit-perspective: 800px; //direct children are ready to move in 3D space 800px-1000px is common
+		-webkit-perspective-origin: <x-pos> <y-pos> px, %, left, right, top, bottom, center //defined on root element //default is centered 50% 50%
+		-webkit-perspective-origin: 100% 100%; //0-100% 50% is the middle between left and right / top and bottom
+	}
+	.wrap {
+		transition: -webkit-transform 1s ease-in;
+		-webkit-transform-style: preserve-3d; //pass down the 3d space to children (side-a, side-b)
+	}
+	.wrap div {
+		position: absolute;
+		-webkit-backface-visibility: hidden; //make backsides invisible
+	}
+	
+	.side-a {
+		z-index: 100;
+	}
+	
+	.side-b {
+		-webkit-transform: rotateY(-180deg); //finally show the side-b card face
+	}
+	
+	.wrap:hover {
+		-webkit-transform: rotateX(45deg);
+		-webkit-transform: rotateX(-45deg);
+		-webkit-transform: rotateZ(65deg);
+		-webkit-transform: rotate3d(1,1,0,65deg); //first 3 values are x,y,z 0-1, 4th value is rotation degrees
+
+	TranslateZ()
+		-webkit-transform: translateZ(200px); //moves closer to user
+		-webkit-transform: translateZ(-200px); //moves away from user
+
+		-webkit-transform: translate3d(<x-axis>, <y-axis>, <z-axis>) (100px, 50px, 150px);
+		
+	ScaleZ()
+		-webkit-transform: scaleZ(2) translate(100px); //200px scale -dependent on translate Z value
+	
+	RotateY() //to view backside
+		-webkit-transform: rotateY(180deg); //flip card sideways //does not show backside
+		//backside of every element is by default visible
+	}
+
+	Establish 3D Space:
+		perspective element on parent
+	
+	Rotate3d() Values:
+		The first 3 values in the argument set the direction of the rotation and the 4th sets the angle
+
+	Perspective Deepth:
+	Deepest -------- Shallowest
+	  0px ------------ 1200px
+
+	Perspective is applied to direct children only
+
+	To hide backside:
+		backface-visibility: hidden;
+
+	Pass Down 3D perspective to nested elements:
+		transform-style: preserve-3d;
+
+	scaleZ() number is multiplied by the element's current position on the Z axis
+
+
+************************************
+********** CSS Animations **********
+************************************
+
+<div class="wrap">
+	<div class="prog-bar"></div>
+</div>
+
+/* Keyframes
+----------------------------*/
+
+@-webkit-keyframes slide {
+	from { width:   0%; }
+	to   { width: 100%; }
+}
+
+.prog-bar {
+	-webkit-animation: slide;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-timing-function: linear;
+}
+
+
+------------Using Percentages for KeyFrames
+
+@-webkit-keyframes slide {
+	0%   { width:   0%; }
+	30%,
+	60%  { width:  50%; }
+	70%  { width:  80%; }
+	100% { width: 100%: }
+}
+
+Default value is the ease timing function
+
+-moz-
+
+-o-
+
+keyframes
+
+///CANT COMMA SEPARATE the KEYFRAMES
+
+www.w3.org/TR/css3-transitions/#animatable-properties
+
+FULL PAGE ANIMATION PROJECT - PART 1
+
+<body>
+	<div class="boat">
+		<img src="img/boat.png" alt="tugboat" />
+	</div>
+	<img class="mike" src="img/mike.png" />
+</body>
+
+body {
+	background: #F0FCFF url('img/island.png') repeat-x 100% -460px;
+}
+
+.boat {
+	width: 380px;
+	position: absolute;
+	top: 40%;
+	left: 35%;
+}
+
+.boat img {
+	width: 100%;
+}
+
+.boat::after {
+	content: "";
+	display: block;
+	width: 120px;
+	height: 120px;
+	background: url('img/steam.png') no-repeat;
+	opacity: 0;
+}
+
+/* Animations
+---------------------- */
+body {
+	-webkit-animation: bg-move 8s ease-out;
+	-webkit-animation-direction: reverse; //timing function is also reversed
+	-webkit-animation-direction: alternate; // odd=normal even=reverse
+	-webkit-animation-direction: alternate-reverse; // odd=reverse even=normal
+	-webkit-animation-fill-mode: forwards; //define styles of animated element before and after animation runs
+						//only affects animations with delay more than 0
+						//backwards: animation begins with 1st keyframe
+						//forwards: animation final keyframe continues after animation completion
+						//both: forwards and backwards -extends in both directions
+						//can be applied to animation value (doesn't matter where)
+	-webkit-animation-play-state: running;	//default
+						//paused -not to immediately run animation
+						//
+}
+
+.boat {
+	-webkit-animation: rock-boat 3s ease-in-out; //<name> <duration> <timing function>
+	-webkit-animation-iteration-count: infinite; //or specify number of times; can be appended to animation property
+}
+
+.boat::after {
+	-webkit-animation: steam 4s(duration) 2s(delay) infinite;
+}
+
+.mike {
+	-webkit-animation: mike-move 6s 6s ease-out forwards,
+			   mike-float 3.2s infinite;
+}
+
+/* Keyframes
+---------------------- */
+
+@-webkit-keyframes rock-boat {
+	0%   {-webkit-transform: rotate(0) translateY(0);}
+	50%  {-webkit-transform: rotate(-5deg) translateY(-10px);}
+	100% {-webkit-transform: rotate(0) translateY(0);}
+}
+
+///Can be rewritten
+
+@-webkit-keyframes rock-boat {
+	50%  {-webkit-transform: rotate(-5deg) translateY(-10px);}
+}
+
+@-webkit-keyframes steam {
+	0%   { opacity: 0; }
+	40%,
+	60%  { opacity: 1; }
+	100% {-webkit-transform: translate(-15%, -35%) rotateZ(20deg);}
+}
+
+@-webkit-keyframes bg-move {
+	0%   { background-position: 100% -560px;  }
+	100% { background-position: -350% -460px; }
+}
+
+@-webkit-keyframes mike-move {
+	100% { left: 12%; }
+}
+
+@-webkit-keyframes mike-float {
+	50% { -webkit-transform: rotateZ(5deg) translateY(-5px); }
+}
+
+************************************
+********** Media Queries ***********
+************************************
+
+/* ============================================
+   Media Queries
+   ============================================ */
+
+@media screen and ((max/min)-(height/width): <value>) { --orientation, aspect ratio, resolution
+	body {
+		background: #FF6347;
+		color: #FFF;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	body {
+		background: #4682B4;
+	}
+}
+
+@media screen and (max-width: 768px) and (min-width: 481px) {
+	body {
+		background-color: tomatored;
+		color: white;
+	}
+}
+
+<link href="css/wider.css" rel="stylesheet" media="screen and (max-width: 768px) and (min-width: 481px)">
+<link href="css/narrow.css" rel="stylesheet" media="screen and (max-width: 480px)">
+
+//The above method needs to make more requests to the server -may affect site performance
+//Stylesheets with media queries will still download even if they return false
+
+we could also within a style sheet
+@import url("wider.css") screen and (max-width: 768px) and (min-width: 481px);
+@import url("narrow.css) screen and (max-width: 480px);
+
+//same issue as above where it's multiple calls to the server
+
+/* ==================================
+   Adaptive Layouts
+   ================================== */
+@media not screen and (monochome) {
+	body {
+		background: red;
+	}
+}
+
+@media not screen and (color) {
+	body {
+		background: red;
+	}
+}
+
+/* Phones to Tablet */
+
+@media screen and (min-width: 481px) {
+	.col {
+		float: left;
+	}
+	.main {
+		width: 65.957446808511%; //it's okay to add as many values
+	}
+	.secondary {
+		width: 31.914893617021%;
+	}
+	.secondary, .extra {
+		margin-left: 2.127659574468%;
+	}
+}
+
+@media only screen and (min-width: 481px) {
+	//only - used to apply styles "ONLY" if entire query matches
+	//useful to prevent older browsers (that don't support
+	//media queries from applying the styles
+}
+
+/* Tablets to Desktop */
+
+@media only screen and (min-width: 769px) {
+	.logo {
+		float: left;
+	}
+	.main-nav {
+		float: right;
+	}
+	.extra {
+		display: block;
+		width: 23.404255319149%;
+	}
+	.main {
+		width: 40.425531914894%;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	.wrap {
+		width: 980px;
+	}
+}
+
+/* ==================================
+   Device Specific Media Queries
+   ================================== */
+
+Smartphones use a virtual viewport so it zooms out as much as it can so
+the entire layout will fit on the screen
+
+Need to add a meta tag!!
+
+in HTML
+
+<meta name="viewport" content="width=device-width">
+
+/* Device */
+
+@media screen and (max-device-width: 479px) {
+	.comments {
+		display: none;
+	}
+}
+
+@media screen and (orientation: landscape/portrait) {
+	body {
+		background: red;
+	}
+}
+
+/* Pixel Ratio and Resolution */
+
+@media screen and (min-device-pixel-ratio: 2) { //iphone is actually double the pixel density
+	//css pixels will become twice as large
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: )
+
+
+Resolution:
+	Display resolution of a screen is the total amount of pixels available
+
+iPhone: Screen Resolution is 320x568 - Pixel Density Resolution 640x1136
+
+Pixel Density:
+	How many pixels fit in a certain amount of space
+	Defined as:
+		ppi (pixels per inch)
+		dpi (dots per inch)
+
+Images can suffer on retina display:
+	-Devices try to double the pixels of an image
+
+Serve a larger image
+
+@media screen and (-webkit-min-device-pixel-ratio: 1.5), screen and (min-resolution: 144dpi) {
+	--above values serve as a catch all for browsers
+	.mike {
+		background-image: url('../img/mike2x.png');
+		background-size: 45px 45px; //account for double pixel density
+	}
+}
+
+Comma (,) in a media query means "or"
+
+How to get dpi?
+
+	Resolution Value:
+		device-pixel-ratio: 1 = 96dpi
+		device-pixel-ratio: 2 = 192dpi
+
+
+/* ==================================
+   Device Specific Media Queries
+   ================================== */
+
+/* Print Stylesheet */
+
+@media print {
+	* {
+		background: transparent !important;
+		color: #000 !important;
+		box-shadow: none !important;
+		text-shadow: none !important;
+	}
+	.main-nav, 
+	.sidebar,
+	.comments,
+	.main-footer,
+	img {
+		display: none;
+	}
+	.main-header {
+		margin-bottom: 0;
+		border: none;
+		text-align: center;
+	}
+	a[href^="http:"]::after {
+		content "[" attr(href)"]";
+		color: blue;
+	}
+	@page {
+		margin: .5cm;
+	}
+	@page :first { --only 1st page
+		margin-top: 2cm;
+	}
+	h2, ul {
+		page-break-after: avoid;
+	}
+	p, ul {
+		orphans: 3;
+		widows: 3;
+		font-size: 11pt;
+	}
+	
+}
