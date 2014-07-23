@@ -17,16 +17,16 @@ function arePasswordsMatching() {
   return $password.val() === $confirmPassword.val();
 }
 
-function usernamePresent() {
+function isUsernamePresent() {
   return $username.val().length > 0;
 }
 
 function canSubmit() {
-  return isPasswordValid() && arePasswordsMatching() && usernamePresent();
+  return isPasswordValid() && arePasswordsMatching() && isUsernamePresent();
 }
 
 function usernameEvent() {
-  if (usernamePresent()) {
+  if (isUsernamePresent()) {
     $username.next().hide();
   } else {
     $username.next().show();
