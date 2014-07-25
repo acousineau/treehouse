@@ -1,5 +1,6 @@
 # AJAX
-## XMLHttpRequest Object (XHR)
+
+## AJAX Concepts
 
 Process of using JS to send request to web server, receive response back, and do something with that response.
 
@@ -14,7 +15,7 @@ X: XML
 3) Open a request
 4) Send the request
 
-### Simple AJAX Example
+#### Simple AJAX Example
 
 ```javascript
 // Step 1) Create an XMLHttp Request object.
@@ -37,9 +38,9 @@ function sendAJAX() {
 }
 ```
 
-## GET and POST
+### GET and POST
 
-### Query Parameters on URL - for GET requests
+#### Query Parameters on URL - for GET requests
 http://website.com/employees.php?lastName=Cousineau
 
 lastName is a name, and Cousineau is the value - forming a pair
@@ -47,7 +48,7 @@ lastName is a name, and Cousineau is the value - forming a pair
 Can be linked together with "&"
 http://website.com/employees.php?firstName=Andy&lastName=Cousineau
 
-### POST
+#### POST
 Must specify header and body for POST
 
 1) Send more than 2083 characters
@@ -55,7 +56,7 @@ Must specify header and body for POST
 
 POST sends its data in the "body" of the request. GET sends data in the URL
 
-## AJAX Response Formats
+### AJAX Response Formats
 
 XML - extensible markup language
 
@@ -74,6 +75,91 @@ XML - extensible markup language
 
 JSON - JS Object Notation
 
-## AJAX Security Limitations
+### AJAX Security Limitations
+
+Limited by a web browser's "same origin policy"
+
+Controls how JS can access content from a server
+
+Can't use it to access another web server - only works with content on your web server(s)
+
+Security:
+Same Server - OK
+Another Server - Error
+Changing protocols - Error
+Changing port numbers - Error
+Switching hosts - Error
+
+Way to go around these issues - say by pulling in content from an API (twitter / flickr)
+
+1) Web Proxy - Have your server talk with another server via APIs
+2) JSONP - JSON with Padding - relies on ability to link to JS files across domains - using CDNs
+3) CORS - Cross Origin Resource Sharing - allows server to accept requests from other domains
+
+4) Does NOT work unless it's working through a web server
+
+## Programming AJAX
+
+### AJAX Callbacks
+
+readyState has 5 values:
+0 - XHR object created
+1 - 
+2 - 
+3 - Response is coming
+4 - Response from server is fully sent and returned
+
+One can also check the status property
+
+```javascript
+xhr.onreadystatechange = function() {
+	if (xhr.readyState === 4) { //implies the response is finished being sent back
+		if (xhr.status === 200){
+			// 200 means OK
+			//404 implies file not found
+			//401 implies file not accessible due to permissions
+			//500 implies server experienced some kind of error
+			document.getElementById("ajax").innerHTML = xhr.responseText;
+		} else if (xhr.status === 404) {
+			// do something if file not found
+		} else if (xhr.status === 500) {
+			//do something if server error
+		}
+	}
+};
+
+//Also a property called statusText that's available based of the request
+var statusText = xhr.statusText
+```
+
+### Introducing JSON
+
+2 Ways to format JSON: Arrays, and Objects
+
+```javascript
+//Array
+[ 'string', true, 42, [1, 2, 3] ]
+
+//Object - VALID JSON REQUIRES DOUBLE QUOTES
+{
+	"name": "Andy",
+	"phone": "603-265-1222"
+}
+```
+
+### Parsing JSON Data
+
+See examples in 01_programming_ajax folder
+
+
+
+
+
+
+
+
+
+
+
 
 
