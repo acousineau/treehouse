@@ -151,6 +151,40 @@ var statusText = xhr.statusText
 
 See examples in 01_programming_ajax folder
 
+## jQuery and AJAX
+
+All 4 methods described above can be all done with jQuery ```load()``` method
+
+```javascript
+$("#footer").load('footer.html');
+```
+
+### jQuery and AJAX Shorthand Methods
+
+```javascript
+var url = '../employees.php';
+var data = {
+	firstName : "Andy",
+	lastName  : "Cousineau"
+};
+var callback = function(response){
+	//do something with the response
+};
+
+$.get(url, data, callback);
+
+//OR....
+$.get('../employees.php', {firstName : "Andy", lastName  : "Cousineau"}, function(r){
+		//do something with the response
+	});
+```
+
+Data - added to url as query string
+
+Callback - don't need to check for readyState or status
+
+
+
 
 
 
