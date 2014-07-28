@@ -183,7 +183,40 @@ Data - added to url as query string
 
 Callback - don't need to check for readyState or status
 
+Convenient "for loop" for arrays and objects
 
+```javascript
+$.each(array_or_object, callback);
+
+$.each(array, function(index, value){
+
+});
+```
+
+### Posting Data with jQuery
+
+Similar method to $.get();
+
+To POST it's $.post(url, data, callback);
+
+```javascript
+var url = "http://website.com/posts/"; //pointing to the server side program that processes the form data - insert into a DB
+var data = {
+	firstName: "Andy";
+	lastName: "Cousineau"
+}; //Data sent with the post
+var callback = function(){}; //Callback to handle response from the server
+
+$.post(url, data, callback);
+```
+
+serialize() - Creates a text string with standard URL-encoded notation of fields in an HTML form.
+
+### The jQuery AJAX Method
+
+```javascript
+$.ajax(url, settings);
+```
 
 
 
