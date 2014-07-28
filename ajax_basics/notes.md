@@ -218,6 +218,19 @@ serialize() - Creates a text string with standard URL-encoded notation of fields
 $.ajax(url, settings);
 ```
 
+### Handling Errors
+
+$.get().fail(); - fail gives tells the browser what to do if the request fails for whatever reason
+
+```javascript
+$.get('missing.html', function(data){
+	$("#myDiv").html(data);
+}).fail(function(jqXHR){
+	alert(jqXHR.status);
+	alert(jqXHR.statusText);
+	$("#myDiv").html("<p>Sorry! " + jqXHR.statusText + " error.</p>");
+});
+```
 
 
 
