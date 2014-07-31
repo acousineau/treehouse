@@ -231,15 +231,3 @@ $.get('missing.html', function(data){
 	$("#myDiv").html("<p>Sorry! " + jqXHR.statusText + " error.</p>");
 });
 ```
-
-
-
-
-
-
-
-
-
-
-
-
