@@ -50,6 +50,7 @@ Output:
 			* 3rd Triplet: Everyone else (public)
 
 2 Treehouses? - `<user> <group> <size>`
+
 `<size>` for Directories doesn't make sense 4096 is just the number associated with directories
 
 ls -a 
