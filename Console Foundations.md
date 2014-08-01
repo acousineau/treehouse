@@ -122,58 +122,49 @@ cat
 ### Editing Files
 
 nano
-	A simple text editor
-
-	another version - pico
-
-	How to save Files
-		Ctrl + X - Exit
-		Y - Save Changes
-		Press Enter to confirm
+* A simple text editor
+* another version - pico
+* How to save Files
+	* Ctrl + X - Exit
+	* Y - Save Changes
+	* Press Enter to confirm
 
 ### Moving and Deleting Files
 
 Renaming Files
-	-moving from 1 location to the other
-		move hello.txt to hi.txt
+* moving from 1 location to the other
+    * move hello.txt to hi.txt
 
 mv
-	move
-	Moves, or renames, a file or directory
+* move
+* Moves, or renames, a file or directory
+    * mv hello.txt hi.txt --Renaming
+    * mv hi.txt documents/ --Moving into a new directory
 
-	mv hello.txt hi.txt --Renaming
-	mv hi.txt documents/ --Moving into a new directory
+* Move to current directory
+    * mv documents/hi.txt .
 
-	Move to current directory
-	mv documents/hi.txt .
-
-	Move and rename
-	mv hi.txt documents/hello.txt
+* Move and rename
+    * mv hi.txt documents/hello.txt
 
 cp
-	Copy
-	Copies a file or directory
-
-	cp hello.txt hi.txt --copying a file
-
-	cp -r documents docs --copying a directory
+* Copy
+* Copies a file or directory
+    * cp hello.txt hi.txt --copying a file
+    * cp -r documents docs --copying a directory
 
 rm
-	Remove
-	Removes a file or directory
-
-	Does not add to recycle bin - it completely removes it!!
-
-	rm hello.txt --removes a file
-	rm -r docs --remove a directory
+* Remove
+* Removes a file or directory
+    * Does not add to recycle bin - it completely removes it!!
+    * rm hello.txt --removes a file
+    * rm -r docs --remove a directory
 
 mkdir
-	Make Directory
-	Create a new directory
-
-	Creating nested directories
-
-	mkdir -p documents/notes/console
+* Make Directory
+* Create a new directory
+* Creating nested directories
+    * mkdir -p documents/notes/console
 
 ## Users and Permissions
 
