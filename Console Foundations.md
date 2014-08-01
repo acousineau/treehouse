@@ -20,110 +20,103 @@ Standard that brings all these together
     * Solaris
 
 MAC OSX 
-	- provides full POSIX compatible environment
-	- Rich Graphical User Interface
+* Provides full POSIX compatible environment
+* Rich Graphical User Interface
 
 ### Running Commands
 
 Blinking Rectangle - Text Cursor
 Text to left of Cursor - PROMPT
 
-	ex: treehouse ~ $ 
+ex: treehouse ~ $ 
 
 ls
-	* list
-	* lists files
+* list
+* lists files
 
 ls -l
-	* ls -l (long form)
-	* Lists the files in a longer form
+* ls -l (long form)
+* Lists the files in a longer form
 
-	output:
-	drwxrwxr-x 2 treehouse treehouse 4069 Jan 30 17:26 documents
-		1st Columen: D for directory
-		3 sets of Triplets:
-			r = read
-			w = write
-			x = execute
-				1st Triplet: The User who created it
-				2nd Triplet: The Group associated with it (the treehouse group)
-				3rd Triplet: Everyone else (public)
+Output:
+* drwxrwxr-x 2 treehouse treehouse 4069 Jan 30 17:26 documents
+    * 1st Columen: D for directory
+    * 3 sets of Triplets:
+	    * r = read
+		* w = write
+		* x = execute
+			* 1st Triplet: The User who created it
+			* 2nd Triplet: The Group associated with it (the treehouse group)
+			* 3rd Triplet: Everyone else (public)
 
-		2 Treehouses? - <user> <group> <size>
-			<size> for Directories doesn't make sense 4096 is just the number associated with directories
+2 Treehouses? - <user> <group> <size>
+<size> for Directories doesn't make sense 4096 is just the number associated with directories
 
 ls -a 
-	-list all
-	-Lists all files including dot files
-		Any File with a dot (.) in the beginning of the file name, they are generally hidden
+* list all
+* Lists all files including dot files
+	* Any File with a dot (.) in the beginning of the file name, they are generally hidden
 
 ls /etc/
-	The "/etc/" is an example of an argument - so it will list the files of a directory inside of the current directory	
+* The "/etc/" is an example of an argument - so it will list the files of a directory inside of the current directory	
 
 clear
-	brings prompt to the top
+* brings prompt to the top
 
 ### Moving Around the Filesystem
 
 Folder = Directory
 
 pwd
-	Print Working Directory
-	Displays your current location in the filesystem
+* Print Working Directory
+* Displays your current location in the filesystem
 
 Most OS's have a HOME directory where Desktop, Documents, Pictures...
 
 Linux
-	/home/<username>/
+* /home/<username>/
 
 Mac
-	/Users/<username>/
+* /Users/<username>/
 
 Home Directory is represented by a "~"
 
 cd 
-	Change Directory
-	Changes the current directory
-
-	ex. cd documents
-
-	"/" represent further levels of directories
+* Change Directory
+* Changes the current directory
+    * ex. cd documents
+    * "/" represent further levels of directories
 
 -bash - program that represents what we are using to take our input
 
-Absolute Path:
-	cd /home/treehouse - represented with a beginning slash - the root
-	cd ~/ - represents to absolutely start at our home directory
-
-	cd ~ - moves to home directory regardless of location
+* Absolute Path:
+    * cd /home/treehouse - represented with a beginning slash - the root
+	* cd ~/ - represents to absolutely start at our home directory
+    * cd ~ - moves to home directory regardless of location
 
 Move Up a Directory
-	cd .. - moves up 1 directory
+* cd .. - moves up 1 directory
 
 ### Reading Files
 
 Pagers
 
 less
-	A program that displays the content of a file
+* A program that displays the content of a file
 
-	Prompt and History goes away - the program less takes up entire window
-		viewing the context of file you are viewing
-
-	Arrow Keys - Move 1 line at a time
-	Spacebar - Moves entire pages
-
-	q - quits out of less program
+* Prompt and History goes away - the program less takes up entire window
+	* viewing the context of file you are viewing
+    * Arrow Keys - Move 1 line at a time
+    * Spacebar - Moves entire pages
+    * q - quits out of less program
 
 more
-	program less is based from, not as many features
+* program less is based from, not as many features
 
 cat
-	Prints the contents of one or more files to the console
-	Concatenates files togethewr
-
-	cat hello.txt documents/how_to_go_home.txt
-
+* Prints the contents of one or more files to the console
+* Concatenates files togethewr
+* cat hello.txt documents/how_to_go_home.txt
 
 ### Editing Files
 
