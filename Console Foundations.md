@@ -49,8 +49,8 @@ Output:
 			* 2nd Triplet: The Group associated with it (the treehouse group)
 			* 3rd Triplet: Everyone else (public)
 
-2 Treehouses? - <user> <group> <size>
-<size> for Directories doesn't make sense 4096 is just the number associated with directories
+2 Treehouses? - `<user> <group> <size>`
+`<size>` for Directories doesn't make sense 4096 is just the number associated with directories
 
 ls -a 
 * list all
@@ -74,10 +74,10 @@ pwd
 Most OS's have a HOME directory where Desktop, Documents, Pictures...
 
 Linux
-* /home/<username>/
+* /home/`<username>`/
 
 Mac
-* /Users/<username>/
+* /Users/`<username>`/
 
 Home Directory is represented by a "~"
 
