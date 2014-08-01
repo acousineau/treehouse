@@ -425,7 +425,7 @@ grep this < hello.txt
 // example
 `grep this hello.txt > hello_grep.txt` //hello_grep.txt now contains what hello.txt 
 
->> `<file>` // appends to end of given file instead of completely overriding it
+`>> <file>` // appends to end of given file instead of completely overriding it
 
 // There are TWO main output streams from a process
 
