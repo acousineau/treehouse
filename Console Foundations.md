@@ -13,11 +13,11 @@ Understanding the Console - Means you understand your operating system better
 
 POSIX - Portable Operating System Interface
 Standard that brings all these together
-    * Unix:
-        * GNU/Linux
-        * Darwin -MAC OSX
-        * BSD
-        * Solaris
+* Unix:
+* GNU/Linux
+* Darwin -MAC OSX
+* BSD
+* Solaris
 
 MAC OSX 
 	- provides full POSIX compatible environment
