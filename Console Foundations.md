@@ -236,13 +236,11 @@ Permissions are represented with octal numbers
 * 2 -w-
 * 1 --x
 * 0 ---
-
 * ugo
 * 742 = rwxr---w-
     * r = 4
     * w = 2
     * x = 1
-
     * chmod 777 -assigns all permissions to users, groups, other
 
 ### File Ownership
