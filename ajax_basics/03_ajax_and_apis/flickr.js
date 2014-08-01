@@ -6,8 +6,13 @@
 
 $('form').submit(function(e){
     e.preventDefault();
+    var $searchField = $("#search");
+    var $submitButton = $("#submit");
+    
+    $searchField.prop("disabled", true);
+    $submitButton.attr("disabled", true).val("Searching...");
     var flickrAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
-    var search = $("#search").val();
+    var search = $searchField.val();
     var flickrOptions = {
         tags: search,
         format: "json"
@@ -21,6 +26,9 @@ $('form').submit(function(e){
         });
         photoHTML += '</ul>';
         $("#photos").html(photoHTML);
+        
+        $searchField.prop("disabled", false);
+        $submitButton.attr("disabled", false).val("Search");
     };
     $.getJSON(flickrAPI, flickrOptions, displayPhotos);
     // Arguments:
@@ -33,7 +41,3 @@ $('form').submit(function(e){
 // 1) Replace button click event with form submit event
 // 2) Stop the form from submitting
 // 3) Retrieve the value the visitor typed into the input field
-
-// $('form').submit(function(e){
-//     e.preventDefault();
-// });
