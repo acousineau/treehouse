@@ -293,14 +293,13 @@ ps - lists out the processes
 Job - process that belongs to you
 
 Pausing - ability to pause a process while a full window program is running
-    * Ctrl + Z 
-    * Gives job number and state "Stopped" then name of process
-	* fg - foreground - Bring the most recently stopped program to the foreground
-	* jobs - prints the list of jobs in this session
-        * if you change directories, (wd: `<directory>`) will appear
-	* fg `<job number>` - opens job specified if multiple jobs are runnin
-	* +/- signifies what process will start if "fg" is performed
-
+* Ctrl + Z 
+* Gives job number and state "Stopped" then name of process
+* fg - foreground - Bring the most recently stopped program to the foreground
+* jobs - prints the list of jobs in this session
+    * if you change directories, (wd: `<directory>`) will appear
+* fg `<job number>` - opens job specified if multiple jobs are runnin
+* +/- signifies what process will start if "fg" is performed
 * top & - runs a process in the background
 
 ### Killing Processes
