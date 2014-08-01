@@ -4,13 +4,12 @@
 // 4) Receive the JSON response
 // 5) Add a link and add an <img> tag to the page
 
-$('button').click(function(){
-    $('button').removeClass("selected");
-    $(this).addClass("selected");
+$('form').submit(function(e){
+    e.preventDefault();
     var flickrAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
-    var animal = $(this).text();
+    var search = $("#search").val();
     var flickrOptions = {
-        tags: animal,
+        tags: search,
         format: "json"
     };
     function displayPhotos(data) {
@@ -29,3 +28,12 @@ $('button').click(function(){
     // 2) data we want to send along with url
     // 3) callback function - runs when flickr sends back response
 });
+
+// Challenge
+// 1) Replace button click event with form submit event
+// 2) Stop the form from submitting
+// 3) Retrieve the value the visitor typed into the input field
+
+// $('form').submit(function(e){
+//     e.preventDefault();
+// });

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>AJAX Flickr Photo Feeder</title>
   <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="css/main2.css">
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 
   
@@ -15,14 +15,12 @@
       <div class="contained">
         <div class="grid-100">
           <div class="heading">
-            <h1>Flickr Photo Feeder</h1>
-            <p>Choose which kind of animal you'd like to return photos of...</p>
-          </div>
-          <ul class="filter-select">
-            <li><button>Dog</button></li>
-            <li><button>Cat</button></li>
-            <li><button>Moose</button></li>
-          </ul>
+            <h1>Flickr Photo Search</h1>
+            <form>
+              <label for="search">Type a search term</label>
+              <input type="search" name="search" id="search">
+              <input type="submit" value="Search" id="submit">
+            </form>
         </div>
 
         <div id="photos">
