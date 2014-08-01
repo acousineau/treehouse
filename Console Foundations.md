@@ -171,186 +171,164 @@ mkdir
 ### Creating Users
 
 whoami
-	Displays the user you are currently logged in as
+* Displays the user you are currently logged in as
 
 sudo adduser
-	Adds a user
+* Adds a user
 
 When prompted with [Y/n]
-	Yes or No
-	The CAPITAL means it's the default
+* Yes or No
+* The CAPITAL means it's the default
 
 su 
-	Switch User
-	Allows you to log in as a different user
+* Switch User
+* Allows you to log in as a different user
 
 exit
-	Exits from the current session
+* Exits from the current session
 
 ### File Permissions
 
 Permissions
-	Read - Reading a File (Read Contents)			r
-	Write - Writing to a File (Update - Delete)		w
-	Execute - Only comes into play with programs	x
+* Read - Reading a File (Read Contents) `r`
+* Write - Writing to a File (Update - Delete) `w`
+* Execute - Only comes into play with programs `x`
 
 Who?
-	User
-	Group
-	Other Users - Not owner, or member of group owning file
+* User
+* Group
+* Other Users - Not owner, or member of group owning file
 
-	u - User
-	g - Group
-	o - Other
+* u - User
+* g - Group
+* o - Other
 
-	9 Permissions on File
+* 9 Permissions on File
+    * rwxrwxrwx
+    * drwxrwxr-x 3 treehouse ....
+    * -rw-rw-r-- 1
+	* drwxrwxr-x 2
+    * - = False
+	* "character" = True
 
-	rwxrwxrwx
-
-	drwxrwxr-x 3 treehouse ....
-	-rw-rw-r-- 1
-	drwxrwxr-x 2
-
-	- = False
-	"character" = True
-
- chmod (changing mode of file/directory)
-	Changes the permissions (mode) of a file or directory
-
-	chmod u/g/o
-
-	chmod o+w hello.txt //adds write permission to other for hello.txt
-
-	chmod +x hello.txt //adds execute permission for everyone
+chmod (changing mode of file/directory)
+* Changes the permissions (mode) of a file or directory
+* chmod u/g/o
+* chmod o+w hello.txt //adds write permission to other for hello.txt
+* chmod +x hello.txt //adds execute permission for everyone
 
 Permissions are represented with octal numbers
-	Octal Notation
+* Octal Notation
 
-	Decimal
-	0	1 	2 	3 	4 	5 	6 	7 	8 	9
-	10	11 	12 	13	14	15	16	17	18	19
+* Decimal
+    * 0	  1  2  3  4  5  6  7  8  9
+    * 10 11 12 13 14 15 16 17 18 19
 
-	Octal
-	0	1 	2 	3 	4 	5 	6 	7
-	10 	11 	12 	13 	14 	15 	16	17
+* Octal
+    * 0   1  2  3  4  5  6  7
+    * 10 11 12 13 14 15 16 17
 
-	7 rwx
-	6 rw-
-	5 r-x
-	4 r--
-	3 -wx
-	2 -w-
-	1 --x
-	0 ---
-		   u  g  o
-	742 = rwxr---w-
+* 7 rwx
+* 6 rw-
+* 5 r-x
+* 4 r--
+* 3 -wx
+* 2 -w-
+* 1 --x
+* 0 ---
 
-	r = 4
-	w = 2
-	x = 1
+* ugo
+* 742 = rwxr---w-
+    * r = 4
+    * w = 2
+    * x = 1
 
-	chmod 777 -assigns all permissions to users, groups, other
+    * chmod 777 -assigns all permissions to users, groups, other
 
 ### File Ownership
 
 chown
-	Change Owner
-	Changes the owner of a file or directory
-
-	sudo chown invisluisdrummer hello.txt //changes owner
-
-	sudo chown invisluisdrummer:invisluisdrummer hello.txt //changes group
+* Change Owner
+* Changes the owner of a file or directory
+    * sudo chown invisluisdrummer hello.txt //changes owner
+    * sudo chown invisluisdrummer:invisluisdrummer hello.txt //changes group
 
 ### SUDO
 
 Root User overrides every permission on every file and can do anything
-	Can be dangerous
+* Can be dangerous
 
 Do day to day work as normal user, and only use root when needed
 
 sudo
-	Run a command as a super user - with priviledges of root
-
-	Sudo Password
-		is user password - not "root" password
+* Run a command as a super user - with priviledges of root
+* Sudo Password
+    * is user password - not "root" password
 
 Trick...
-	!!
-		Represents the most recently run command
-
-	sudo !!
+* !!
+* Represents the most recently run command
+    * sudo !!
 
 ## Processes
 
 ### What is  Process?
 
 Process - instance of a program - when you run a program it creates an instance
-	- multiple instances of the same program can be made at once
-	- unique id, who owns it, when and where it started, how many resources consumed (memory/cpu)
+* multiple instances of the same program can be made at once
+* unique id, who owns it, when and where it started, how many resources consumed (memory/cpu)
 
 top - task manager is windows/activity monitor in apple
-    - gives up to date info on processes on our machine
-
-    ? - brings up the help
-      - Look up how to sort
-
-    q - quits the program
+* gives up to date info on processes on our machine
+* ? - brings up the help
+* - Look up how to sort
+* q - quits the program
 
 ps - lists out the processes
-   - all the programs you are running - usually when this runs bash and ps will appear by default considering both are running
-
-   Arguments:
-   ps aux - view all processes - all users - a LOT more...
-
-   ps aux | grep "top" - filters processes to only lines that have "top" in them
+* all the programs you are running - usually when this runs bash and ps will appear by default considering both are running
+* Arguments:
+    * ps aux - view all processes - all users - a LOT more...
+    * ps aux | grep "top" - filters processes to only lines that have "top" in them
 
 ### Pausing and Resuming Jobs
 
 Job - process that belongs to you
 
 Pausing - ability to pause a process while a full window program is running
-	Ctrl + Z 
-	Gives job number and state "Stopped" then name of process
+    * Ctrl + Z 
+    * Gives job number and state "Stopped" then name of process
 
-	fg - foreground - Bring the most recently stopped program to the foreground
+	* fg - foreground - Bring the most recently stopped program to the foreground
 
-	jobs - prints the list of jobs in this session
-		if you change directories, (wd: <directory) will appear
+	* jobs - prints the list of jobs in this session
+        * if you change directories, (wd: `<directory>`) will appear
 
-	fg <job number> - opens job specified if multiple jobs are running
+	* fg `<job number>` - opens job specified if multiple jobs are running
 
-	+/- signifies what process will start if "fg" is performed
+	* +/- signifies what process will start if "fg" is performed
 
-top & - runs a process in the background
+* top & - runs a process in the background
 
 ### Killing Processes
 
-signal - a message sent to a process by the operating system
-
-kill - sends a signal to a process
-
-signal: TERM - Requests that the process terminates after any cleanup
-
-ctrl + z --actually a signal telling a process to stop
-ctrl + c --Sent the TERM signal to the current process
-
-
+* signal - a message sent to a process by the operating system
+* kill - sends a signal to a process
+* signal: TERM - Requests that the process terminates after any cleanup
+    * ctrl + z --actually a signal telling a process to stop
+    * ctrl + c --Sent the TERM signal to the current process
 
 What if process is in a different tab?
-	
-	//Find process ID
-	ps aux | grep "top" //second number from left
+* //Find process ID
+* ps aux | grep "top" //second number from left
 
-	//Then kill command
-	kill 1450  <== ID //sends TERM to process
+* //Then kill command
+* kill 1450  <== ID //sends TERM to process
 
 What if the process is in a state where it's NOT looking at the signals coming in...?
 
 //Find process id and kill
-
-kill -STOP 1456 //sends normal STOP signal
-
-kill -KILL 1456 //overrides process - last resort...
+* kill -STOP 1456 //sends normal STOP signal
+* kill -KILL 1456 //overrides process - last resort...
 
 ## Environment and Redirection
 
@@ -358,12 +336,11 @@ kill -KILL 1456 //overrides process - last resort...
 
 env - displays what all the environment variables are
 
-$<name of env variable> - displays value for env variable
+$`<name of env variable>` - displays value for env variable
 
-PS1="<stuff>" - sets the variable to change the bash prompt
+PS1="`<stuff>`" - sets the variable to change the bash prompt
 
 // Any environment variable can be set - example
-
 MESSAGE="hello world"
 echo $MESSAGE // hello world
 
@@ -384,7 +361,7 @@ All these variables can be used by programs - whether they are credentials to da
 
 // THE PATH
 
-export PATH=<stuff>:$PATH // this allows you to use existing path while
+export PATH=`<stuff>`:$PATH // this allows you to use existing path while
 // setting the path variable
 
 ### Find and Grep
@@ -396,25 +373,25 @@ Grep - search within files
 
 // Find
 
-find . -name "<name of file" // find file named within current directory designated
+find . -name "`<name of file>`" 
+// find file named within current directory designated
 // by the dot (.)
 
-find / -name "<name of file" // searches to find file on the entire system (/)
+find / -name "`<name of file>`" // searches to find file on the entire system (/)
 
-find documents bin -name "<name of file" // searches multiple starting points for file
+find documents bin -name "`<name of file>`" // searches multiple starting points for file
 
 // Grep
 
 // global regular expression print
 
-grep "<pattern>" <filename>
+grep "`<pattern>`" `<filename>`
 
+grep -n `<pattern>` `<hello.txt>` // generates line numbers
 
-grep -n <pattern> <hello.txt> // generates line numbers
+grep -i `<pattern>` `<filename>` // Ignores capitalization
 
-grep -i <pattern> <filename> // Ignores capitalization
-
-grep -v <pattern> <filename> // Find lines that DO NOT contain pattern
+grep -v `<pattern>` `<filename>` // Find lines that DO NOT contain pattern
 
 man grep // Opens grep manual instructions
 
@@ -434,7 +411,7 @@ Standard In --> Process -(Pipe)-> Process --> Standard Out
 
 // Grep with no input -- automatically makes the keyboard the standard in
 
-grep <pattern>
+grep `<pattern>`
 
 // then to exit
 Ctrl + d
@@ -453,9 +430,9 @@ grep this < hello.txt
 >
 
 // example
-grep this hello.txt > hello_grep.txt //hello_grep.txt now contains what hello.txt 
+`grep this hello.txt > hello_grep.txt` //hello_grep.txt now contains what hello.txt 
 
->> <file> // appends to end of given file instead of completely overriding it
+>> `<file>` // appends to end of given file instead of completely overriding it
 
 // There are TWO main output streams from a process
 
@@ -484,7 +461,7 @@ sort - sorts the lines of the standard input and sends it to standard output
 
 ps aux | grep bash | sort
 
-ps aux | grep bash | sort > sorted_bash_procs.txt
+`ps aux | grep bash | sort > sorted_bash_procs.txt`
 
 ## Installing Software
 
@@ -501,12 +478,12 @@ sudo apt-get install build-essential - install tools requested
 
 which - takes the name of a program and finds out from where it is being sourced
 
-curl -O <url> //used to make requests from internet 
+curl -O `<url>` //used to make requests from internet 
 // -O means save to a file on machine
 
 // In the case of a 'tarball' file - for installation
 
-tar -xvf <file> //extract (x), verbose output (v), points to file (f)
+tar -xvf `<file>` //extract (x), verbose output (v), points to file (f)
 
 // Above action created a directory with same name - ls to look at contents
 // Run program inside directory called 'configure'
@@ -542,7 +519,7 @@ sudo apt-get update // updates the local db of available packages
 sudo apt-get install git
 
 // How to search for things in the DB
-apt-cache search <pattern>
+apt-cache search `<pattern>`
 
 // Update software - new versions of tools
 sudo apt-get upgrade
@@ -551,4 +528,4 @@ sudo apt-get upgrade
 
 // Uninstall A Program
 
-sudo apt-get remove <package>
+sudo apt-get remove `<package>`
