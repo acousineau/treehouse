@@ -231,3 +231,33 @@ $.get('missing.html', function(data){
 	$("#myDiv").html("<p>Sorry! " + jqXHR.statusText + " error.</p>");
 });
 ```
+
+## AJAX and APIs
+
+### What is an API?
+
+Application Programming Interface - allows for programmers to access data from other sources
+
+Examples:
+* Tweets from Twitter
+* Photos from Instagram or Flickr
+* YouTube videos
+
+API provides method to connect your site to a third party service
+* Defines what you can get
+* How you can get it
+
+Some sites even have JS APIs so there is no need to connect to a server
+
+### APIs
+
+API Key - acts as a password, allows access to API
+This system of keys also allows hosting sites like Flickr to revoke keys in case
+any single site is requesting too much
+
+Google Maps actually limits the number of requests you make in a single day
+
+JSONP:
+* Method for requesting data from another server by bypassing a web browser's same origin policy
+* JSON with Padding
+* A way of sending data in a JavaScript file
