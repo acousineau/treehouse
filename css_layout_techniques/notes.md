@@ -26,3 +26,6 @@ you can't give them width or a top/bottom margin.
 
 There is also unwanted whitespace in between elements because line breaks and tabs are rendered
 as spaces for inline elements. To rectify - add a NEGATIVE MARGIN
+
+There is also an issue when the viewport size in narrower - to rectify give header a whitespace value NOWRAP...
+However... this causes the elements to extend beyond their container

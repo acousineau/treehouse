@@ -27,6 +27,7 @@ body {
 
 .main-header {
     padding: 20px;
+    white-space: nowrap;
 }
 
 .main-logo,
