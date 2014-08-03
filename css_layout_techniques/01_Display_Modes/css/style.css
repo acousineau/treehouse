@@ -7,10 +7,17 @@ body {
     background-color: #edeff0;
 }
 
-.main-wrapper {
-    width: 90%;
-    margin: auto;
+html,
+body,
+.main-wrapper,
+.col {
+    height: 100%; /* Calculated based on parent element */
 }
+
+/*.main-wrapper {*/
+/*    width: 90%;*/
+/*    margin: auto;*/
+/*}*/
 
 * {
     box-sizing: border-box;
@@ -33,6 +40,12 @@ body {
     display: table;
     width: 100%;
     min-height: 150px;
+}
+
+.main-banner {
+    background-color: #EBEDEE;
+    text-align: center;
+    padding: 35px 15px;
 }
 
 .main-logo,
@@ -71,6 +84,29 @@ body {
     display: block;
     text-align: center;
     padding: 10px 20px;
+}
+
+.main-footer {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Column Layout
+================================ */
+
+.col {
+    display: inline-block;
+    padding: 20px;
+    margin-right: -5px; /* This value is dependent on font-size */
+    vertical-align: top; /* Trick for when using inline-block column layout */
+}
+
+.primary-content {
+    width: 60%;
+}
+
+.secondary-content {
+    width: 40%;
 }
 
 /* Media Queries

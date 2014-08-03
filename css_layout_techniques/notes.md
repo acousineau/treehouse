@@ -100,3 +100,43 @@ isn't something you necessarily want - to help with this....
     }
 }
 ```
+
+### Column Layout with Inline-Block
+
+```css
+/* Column Layout
+================================ */
+
+.col {
+    display: inline-block;
+    padding: 20px;
+    margin-right: -5px; /* This value is dependent on font-size */
+    vertical-align: top; /* Trick for when using inline-block column layout */
+}
+
+.primary-content {
+    width: 60%;
+}
+
+.secondary-content {
+    width: 40%;
+}
+```
+
+Keep in mind that even with the above widths - inline elements will experience added whitespace and that needs
+to be fixed with negative margin.
+
+There are also some issues with the page now that we want the entire page to take up the full height of the browser window
+
+```css
+
+/*  Select all main container divs */
+
+html,
+body,
+.main-wrapper,
+.col {
+    height: 100%; /* Calculated based on parent element */
+}
+```
+
