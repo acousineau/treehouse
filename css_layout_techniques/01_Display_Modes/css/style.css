@@ -27,13 +27,12 @@ body {
 
 .main-header {
     padding: 20px;
-    white-space: nowrap;
 }
 
 .main-logo,
 .main-nav,
 .main-nav li {
-    display: inline;
+    display: inline-block;
 }
 
 .main-logo,
@@ -43,13 +42,15 @@ body {
 }
 
 .main-nav li {
+    margin-top: 15px;
     margin-right: 10px;
 }
 
 .main-logo {
+    margin-top: 0;
+    margin-bottom: 0;
     margin-right: 50px;
-    width: 200px;
-    margin-top: 50px;
+    width: 120px;
 }
 
 .main-logo a,

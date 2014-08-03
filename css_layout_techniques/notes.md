@@ -29,3 +29,13 @@ as spaces for inline elements. To rectify - add a NEGATIVE MARGIN
 
 There is also an issue when the viewport size in narrower - to rectify give header a whitespace value NOWRAP...
 However... this causes the elements to extend beyond their container
+
+### Inline-Block Formatting
+
+Allows to add width, top/bottom margin, and on smaller viewports items collapse naturally
+
+But... there is still that white-space issue.
+
+There is also an issue with the height of elements. Height of header increased - the reason is 
+the logo is contained in an H1 Element - headings by default have a top and bottom margin that
+NORMALIZE does NOT reset.
