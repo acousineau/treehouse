@@ -12,6 +12,9 @@ body {
     margin: auto;
 }
 
+* {
+    box-sizing: border-box;
+}
 /* Layout Element Colors
 ================================ */
 
@@ -27,6 +30,9 @@ body {
 
 .main-header {
     padding: 20px;
+    display: table;
+    width: 100%;
+    min-height: 150px;
 }
 
 .main-logo,
@@ -36,20 +42,26 @@ body {
 }
 
 .main-logo,
+.main-nav {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.main-logo,
 .main-nav li {
     border-radius: 5px;
 }
 
 .main-nav li {
-    margin-top: 15px;
     margin-right: 10px;
 }
 
 .main-logo {
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-right: 50px;
     width: 120px;
+}
+
+.main-nav {
+    padding-left: 50px;
 }
 
 .main-logo a,
@@ -59,4 +71,25 @@ body {
     display: block;
     text-align: center;
     padding: 10px 20px;
+}
+
+/* Media Queries
+================================ */
+
+@media (max-width: 768px) {
+    .main-logo,
+    .main-nav,
+    .main-nav li {
+        display: block;
+        width: initial;
+        margin: initial;
+    }
+    
+    .main-nav {
+        padding-left: initial;
+    }
+    
+    .main-nav li {
+        margin-top: 15px;
+    }
 }

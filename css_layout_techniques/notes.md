@@ -46,3 +46,57 @@ DISPLAY VALUES ARE NOT INHERITED BY THEIR CHILDREN!!!
 
 So you simply add display block to the anchors and take padding from their parent elements
 and add it to them.
+
+### Table Display
+
+```css
+.main-header {
+    padding: 20px;
+    display: table;
+    width: 100%;
+}
+
+.main-logo,
+.main-nav {
+    display: table-cell;
+    vertical-align: middle;
+}
+```
+
+Be careful - as adding width and padding can make elements larger than normal - to fix use BOX-SIZING!
+
+```css
+* {
+    box-sizing: border-box;
+}
+```
+
+This allows an element to take padding and margin into account when calculating width - pretty cool
+
+Margins do NOT work on elements displayed as TABLE CELLS - using PADDING instead
+
+ISSUE: When using tables for layout - the height will adjust to elements in smaller viewports which
+isn't something you necessarily want - to help with this....
+
+```css
+/* Media Queries
+================================ */
+
+@media (max-width: 768px) {
+    .main-logo,
+    .main-nav,
+    .main-nav li {
+        display: block;
+        width: initial;
+        margin: initial;
+    }
+    
+    .main-nav {
+        padding-left: initial;
+    }
+    
+    .main-nav li {
+        margin-top: 15px;
+    }
+}
+```
