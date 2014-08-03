@@ -115,9 +115,11 @@ body,
 @media (max-width: 768px) {
     .main-logo,
     .main-nav,
-    .main-nav li {
+    .main-nav li,
+    .col {
         display: block;
         width: initial;
+        height: initial;
         margin: initial;
     }
     
@@ -127,5 +129,9 @@ body,
     
     .main-nav li {
         margin-top: 15px;
+    }
+    
+    .main-banner {
+        display: none;
     }
 }
