@@ -5,6 +5,9 @@ body {
     font: normal 1.1em/1.5 sans-serif;
     color: #222;
     background-color: #edeff0;
+}
+
+.main-wrapper {
     width: 90%;
     margin: auto;
 }
@@ -21,6 +24,10 @@ body {
 
 /* Header, Banner and Footer Layouts
 ================================ */
+
+.main-header {
+    padding: 20px;
+}
 
 .main-logo a,
 .main-nav a {

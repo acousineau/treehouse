@@ -13,3 +13,10 @@ Many frameworks come with their own styles to override the default styles of a b
 
 ### Block vs. Inline Elements
 
+Margin Collapsing Issue - Margins on children overriding margins of parents. This happens
+because there is no BORDER, PADDING, CONTENT - anything to separate the top margin of our block
+level body element with the top margin of its first child. BODY - MAIN-WRAPPER - so if there
+is nothing to separate those top-margins, they COLLAPSE!
+
+To fix - we can either add BORDER or PADDING to an element - in this case... the MAIN-HEADER
+
