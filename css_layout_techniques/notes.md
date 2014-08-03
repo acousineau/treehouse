@@ -39,3 +39,10 @@ But... there is still that white-space issue.
 There is also an issue with the height of elements. Height of header increased - the reason is 
 the logo is contained in an H1 Element - headings by default have a top and bottom margin that
 NORMALIZE does NOT reset.
+
+Fix Issue with Anchor Tag not have full area of parent element:
+
+DISPLAY VALUES ARE NOT INHERITED BY THEIR CHILDREN!!!
+
+So you simply add display block to the anchors and take padding from their parent elements
+and add it to them.
