@@ -29,6 +29,28 @@ body {
     padding: 20px;
 }
 
+.main-logo,
+.main-nav,
+.main-nav li {
+    display: inline;
+}
+
+.main-logo,
+.main-nav li {
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.main-nav li {
+    margin-right: 10px;
+}
+
+.main-logo {
+    margin-right: 50px;
+    width: 200px;
+    margin-top: 50px;
+}
+
 .main-logo a,
 .main-nav a {
     color: white;

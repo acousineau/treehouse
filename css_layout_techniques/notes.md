@@ -20,3 +20,9 @@ is nothing to separate those top-margins, they COLLAPSE!
 
 To fix - we can either add BORDER or PADDING to an element - in this case... the MAIN-HEADER
 
+Inline Elements:
+Set the navigation li's and logo's style to display inline - however the issue with this is
+you can't give them width or a top/bottom margin.
+
+There is also unwanted whitespace in between elements because line breaks and tabs are rendered
+as spaces for inline elements. To rectify - add a NEGATIVE MARGIN
