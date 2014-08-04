@@ -155,3 +155,5 @@ children.
 
 ### The Float Clearfix
 
+Forces the parent element to clear it's children - that means... that the elements will never collapse
+

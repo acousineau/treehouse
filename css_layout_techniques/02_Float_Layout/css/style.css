@@ -33,7 +33,6 @@ body {
 	margin: auto;
 }
 .main-header {
-	min-height: 100px;
 	padding: 15px;
 }
 
@@ -77,6 +76,14 @@ body {
 
 .col {
 	padding: 20px;
+}
+
+/* Clearfix
+================================ */
+.group::after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 /* Media Queries
