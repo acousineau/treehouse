@@ -157,3 +157,6 @@ children.
 
 Forces the parent element to clear it's children - that means... that the elements will never collapse
 
+Now... there is an issue with the nav links wrapping around the logo when the viewport is
+adjusted...
+
