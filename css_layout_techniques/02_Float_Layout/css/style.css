@@ -1,0 +1,98 @@
+
+/* Page Styles
+================================ */
+
+* {
+	box-sizing: border-box;
+}
+html,
+body{
+	height: 100%;
+}
+body {
+	font: normal 1.1em/1.5 sans-serif;
+	color: #222;
+	background-color: #edeff0;
+}
+
+/* Layout Element Colors
+================================ */
+
+.main-header       { background-color: #384047; }
+.main-logo a       { background-color: #5fcf80; }
+.main-nav a       { background-color: #3f8abf; }
+.primary-content   { background-color: #caebf6; }
+.secondary-content { background-color: #bfe3d0; }
+.main-footer       { background-color: #b7c0c7; }
+
+/* Main Layout Styles
+================================ */
+
+.main-wrapper {
+	width: 90%;
+	margin: auto;
+}
+.main-header {
+	min-height: 100px;
+	padding: 15px;
+}
+
+.main-logo,
+.main-nav li {
+    float: left;
+}
+
+.main-nav li {
+    margin-top: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.main-logo {
+    margin: 0 50px 0 0;
+}
+
+.main-logo a, 
+.main-nav a {
+	display: block;
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	padding: 5px 15px;
+	border-radius: 5px;
+}
+.main-banner {
+	background: #dfe2e4;
+	text-align: center;
+	padding: 35px 15px;
+}
+.main-footer {
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+/* Column Layout
+================================ */
+
+.col {
+	padding: 20px;
+}
+
+/* Media Queries
+================================ */
+
+@media (max-width: 768px) {
+	.main-wrapper,
+	.main-nav li, 
+	.main-logo {
+		width: initial;
+		height: initial;
+	}
+	.main-logo {
+		margin-right: 0;
+	}
+	.extra-content {
+		display: none;
+	}
+}

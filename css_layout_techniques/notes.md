@@ -130,7 +130,7 @@ There are also some issues with the page now that we want the entire page to tak
 
 ```css
 
-/*  Select all main container divs */
+/* Select all main container divs */
 
 html,
 body,
@@ -139,4 +139,19 @@ body,
     height: 100%; /* Calculated based on parent element */
 }
 ```
+
+## Float Layout
+
+Floats come from print design. Images are layed out on the page where the text is wrapped
+around them.
+
+### Horizontal Menu
+
+Floats are technically block level elements but behave as inline elements. Floats exist
+outside the normal document flow.
+
+Issues you may encounter is parent elements appearing collapsed unless they are floated along with their
+children.
+
+### The Float Clearfix
 
