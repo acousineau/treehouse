@@ -160,3 +160,5 @@ Forces the parent element to clear it's children - that means... that the elemen
 Now... there is an issue with the nav links wrapping around the logo when the viewport is
 adjusted...
 
+### Floating Columns and Images
+
