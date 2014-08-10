@@ -1,2 +1,4 @@
 p {
   color: #bada55; }
+  p a:hover {
+    color: white; }
