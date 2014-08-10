@@ -5,10 +5,12 @@
 * {
 	box-sizing: border-box;
 }
+
 html,
 body{
 	height: 100%;
 }
+
 body {
 	font: normal 1.1em/1.5 sans-serif;
 	color: #222;
@@ -97,6 +99,8 @@ body {
 	margin-top: 10px;
 	margin-right: 25px;
 	margin-bottom: 10px;
+	border: solid 1px;
+	padding: 5px;
 }
 
 /* Clearfix
@@ -113,11 +117,18 @@ body {
 @media (max-width: 768px) {
 	.main-wrapper,
 	.main-nav li, 
-	.main-logo {
+	.main-logo,
+	.col,
+	.feat-img {
 		width: initial;
 		height: initial;
 		float: initial;
 	}
+	
+	.feat-img {
+		width: 100%;
+	}
+	
 	.main-logo {
 		margin-right: 0;
 	}
