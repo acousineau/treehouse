@@ -28,10 +28,11 @@ body {
 /* Main Layout Styles
 ================================ */
 
-.main-wrapper {
-	width: 90%;
-	margin: auto;
-}
+/*.main-wrapper {*/
+/*	width: 90%;*/
+/*	margin: auto;*/
+/*}*/
+
 .main-header {
 	padding: 15px;
 }
@@ -76,6 +77,26 @@ body {
 
 .col {
 	padding: 20px;
+	float: left;
+	width: 30%;
+}
+
+.primary-content {
+	width: 40%;
+}
+
+.col:last-child {
+	float: right;
+}
+
+/* Imagery
+================================ */
+.feat-img {
+	width: 50%;
+	float: left;
+	margin-top: 10px;
+	margin-right: 25px;
+	margin-bottom: 10px;
 }
 
 /* Clearfix

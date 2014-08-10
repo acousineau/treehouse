@@ -162,3 +162,14 @@ adjusted...
 
 ### Floating Columns and Images
 
+Now let's float our columns and give a width of 30% - an issue arises! The footer content is intermingled
+with our columns - however, we've already created a fix for this with the group class. Simply add it to the
+parent element.
+
+We can even change around the content order and the styles will not "break"
+
+Adding images and floating left to a side will allow text to wrap around them.
+
+MUST ADD MARGINS to IMAGE because if added to paragraph... because the image is out of the normal
+document flow... it will ignore the space between the paragraph and the image (it will actually
+just add margin to left side of paragraph parent div)
