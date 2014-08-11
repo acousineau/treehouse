@@ -180,3 +180,22 @@ The idea here is to build the CSS up for larger browser sizes instead of the oth
 
 Currently, the site is set up to load all the CSS and then change it when the device width narrows. This
 is actually rather inefficient.
+
+## Positioning Schemes
+
+### Relative Positioning
+
+Positioning offsets that are set in CSS provide information to position an element RELATIVE to
+its original position.
+
+Any offset moves the element in the direction opposite of what is defined:
+
+```css
+.element {
+    position: relative;
+    top: 20px; /* moves element down 20px */
+    bottom: 20px; /* moves element up 20px */
+    left: 20px; /* moves element right 20px */
+    right: 20px; /* moves element left 20px */
+}
+```
