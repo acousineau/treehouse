@@ -6,6 +6,8 @@
 	-moz-box-sizing: border-box;	
 	box-sizing: border-box;
 }
+
+html,
 body {
 	font: normal 1.1em/1.5 sans-serif;
 	color: #222;
@@ -28,7 +30,6 @@ body {
 .main-header {
 	padding: 15px;
 	min-height: 100px;
-	overflow: hidden;
 }
 .main-nav li {
 	margin-top: 15px;
@@ -83,26 +84,34 @@ body {
 ================================ */
 
 @media (min-width: 769px) {
-
-	.main-wrapper {
-		width: 95%;
-		margin: auto;
+	
+	.main-wrapper,
+	.content-row,
+	.col {
+		height: 100%;
 	}
+	/*.main-wrapper {*/
+	/*	width: 95%;*/
+	/*	margin: auto;*/
+	/*}*/
 
 	/* Header, Banner and Footer Layout
 	================================ */
 	
-	.main-logo,
-	.main-nav {
+	.main-header {
 		position: relative;
 	}
+	.main-logo,
+	.main-nav {
+		position: absolute;
+	}
 	.main-logo {
-		width: 150px;
 		top: 20px;
+		left: -10px;
 	}
 	.main-nav {
-		bottom: 32px;
-		left: 200px;
+		bottom: 35px;
+		right: 25px;
 	}
 	.main-nav li {
 		margin-right: 6px;
@@ -119,16 +128,24 @@ body {
 	/* Column Layout
 	================================ */
 
+	.extra-content,
+	.main-banner {
+		display: block; /*Unhide from mobile view */
+	}
+	.content-row {
+		position: relative;
+	}
 	.col {
 		width: 30%;
-		display: inline-block;
-		margin-right: -5px;
-		vertical-align: top;
+		position: absolute;
 	}
 	.primary-content {
 		width: 40%;
+		left: 30%;
 	}
-
+	.secondary-content {
+		right: 0;
+	}
 	/* Imagery
 	================================ */
 

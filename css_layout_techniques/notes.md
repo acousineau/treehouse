@@ -199,3 +199,13 @@ Any offset moves the element in the direction opposite of what is defined:
     right: 20px; /* moves element left 20px */
 }
 ```
+
+### Absolute Positioning
+
+Position Relative serves as a context for an Absolutely positioned element. So the absolutely
+positioned element will climb up the DOM tree to find the parent element with a relative position and
+that is what it will base it's position from. Otherwise, if no relatively positioned elements are found,
+it uses the browser window.
+
+One issue with absolutely positioning elements is that there must be a HEIGHT on the parent element. 
+Otherwise, the elements will collapse and not be visible.
