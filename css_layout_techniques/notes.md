@@ -173,3 +173,10 @@ Adding images and floating left to a side will allow text to wrap around them.
 MUST ADD MARGINS to IMAGE because if added to paragraph... because the image is out of the normal
 document flow... it will ignore the space between the paragraph and the image (it will actually
 just add margin to left side of paragraph parent div)
+
+### Mobile First Layout Perspective
+
+The idea here is to build the CSS up for larger browser sizes instead of the other way around.
+
+Currently, the site is set up to load all the CSS and then change it when the device width narrows. This
+is actually rather inefficient.
