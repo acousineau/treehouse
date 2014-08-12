@@ -12,7 +12,7 @@ body {
 	height: 100%;
 }
 
-body, {
+body {
 	font: normal 1.1em/1.5 sans-serif;
 	color: #222;
 	background-color: #edeff0;
@@ -75,6 +75,29 @@ body, {
 	padding: 5px;
 }
 
+.icon {
+	background-color: #39ADD1;
+	margin-top: 34px;
+	height: 180px;
+	border-radius: 5px;
+	position: relative;
+}
+
+.icon::after {
+	content: "";
+	display: block;
+	width: 150px;
+	height: 90px;
+	background: url("../img/icon.png") no-repeat;
+	background-size: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+}
+
 /* Float Clearfix
 ================================ */
 
@@ -89,19 +112,9 @@ body, {
 
 @media (min-width: 769px) {
 	
-	.main-wrapper,
-	.content-row,
-	.col {
-		height: 100%;
-	}
-	
 	body {
 		padding-top: 100px;
 	}
-	/*.main-wrapper {*/
-	/*	width: 95%;*/
-	/*	margin: auto;*/
-	/*}*/
 
 	/* Header, Banner and Footer Layout
 	================================ */
@@ -117,11 +130,12 @@ body, {
 		position: absolute;
 	}
 	.main-logo {
+		width: 150px;
 		top: 20px;
-		left: -10px;
+		left: 20px;
 	}
 	.main-nav {
-		bottom: 35px;
+		bottom: 30px;
 		right: 25px;
 	}
 	.main-nav li {
@@ -132,7 +146,7 @@ body, {
 	.main-banner {
 		background: #dfe2e4;
 		text-align: center;
-		padding: 35px 15px;
+		padding: 50px 15px;
 		display: block;
 	}
 
@@ -148,6 +162,8 @@ body, {
 	}
 	.col {
 		width: 30%;
+		/*display: inline-block;*/
+		vertical-align: top;
 		position: absolute;
 	}
 	.primary-content {

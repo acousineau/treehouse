@@ -220,3 +220,30 @@ than any other element on the page. This will allow, as you scroll, the content 
 
 Fixed positioning takes elements out of the normal document flow. Therefore, padding-top should be added to the body
 that is equal to the height of the header. 
+
+### Absolute Centering
+
+```css
+.icon {
+	background-color: #39ADD1;
+	margin-top: 34px;
+	height: 180px;
+	border-radius: 5px;
+	position: relative;
+}
+
+.icon::after {
+	content: "";
+	display: block;
+	width: 150px;
+	height: 90px;
+	background: url("../img/icon.png") no-repeat;
+	background-size: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+}
+```
