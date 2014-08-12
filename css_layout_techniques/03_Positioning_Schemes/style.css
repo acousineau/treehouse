@@ -3,6 +3,7 @@
 ================================ */
 
 * {
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 html,
@@ -76,7 +77,23 @@ body {
 	margin-top: 34px;
 	height: 180px;
 	border-radius: 5px;
+	position: relative;
 }
+.icon::after {
+	content: "";
+	display: block;
+	width: 150px;
+	height: 90px;
+	background: url('../img/icon.png') no-repeat;
+	background-size: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+}
+
 
 
 /* Float Clearfix
