@@ -1,0 +1,154 @@
+
+/* Page Styles
+================================ */
+
+* {
+	box-sizing: border-box;
+}
+html,
+body {
+ height: 100%;
+}
+body {
+	font: normal 1.1em/1.5 sans-serif;
+	color: #222;
+	background-color: #edeff0;
+}
+
+/* Layout Element Colors
+================================ */
+
+.main-header       { background-color: #384047; }
+.main-logo a       { background-color: #5fcf80; }
+.main-nav a        { background-color: #3f8abf; }
+.primary-content   { background-color: #caebf6; }
+.secondary-content { background-color: #bfe3d0; }
+.main-footer       { background-color: #b7c0c7; }
+
+/* Header, Banner and Footer Layout
+================================ */
+
+.main-header {
+	padding: 15px;
+	min-height: 100px;
+}
+.main-nav li {
+	margin-top: 15px;
+}
+.main-logo a, 
+.main-nav a {
+	display: block;
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	padding: 5px 15px;
+	border-radius: 5px;
+}
+.main-footer {
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+/* Column Layout
+================================ */
+
+.col {
+	padding: 20px;
+}
+.extra-content,
+.main-banner {
+	display: none;
+}
+
+/* Imagery
+================================ */
+
+.feat-img {
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: solid 1px;
+	padding: 5px;
+}
+.icon {
+	background-color: #39add1;
+	margin-top: 34px;
+	height: 180px;
+	border-radius: 5px;
+}
+
+
+/* Float Clearfix
+================================ */
+
+.group:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+/* Media Queries
+================================ */
+
+@media (min-width: 769px) {
+
+	body {
+		padding-top: 100px;
+	}
+
+	/* Header, Banner and Footer Layout
+	================================ */
+
+	.main-header {
+		position: fixed;
+		top: 0;
+		width: 100%;
+	}
+	.main-logo,
+	.main-nav {
+		position: absolute;
+	}
+	.main-logo {
+		width: 150px;
+		top: 20px;
+		left: 20px;
+	}
+	.main-nav {
+		bottom: 30px;
+		right: 25px;
+	}
+	.main-nav li {
+		margin-right: 6px;
+		margin-left: 6px;
+		display: inline-block;
+	}
+	.main-banner {
+		background: #dfe2e4;
+		text-align: center;
+		padding: 50px 15px;
+		display: block;
+	}
+
+	/* Column Layout
+	================================ */
+
+	.col {
+		width: 30%;
+		display: inline-block;
+		margin-right: -5px;
+		vertical-align: top;
+	}
+	.primary-content {
+		width: 40%;
+	}
+
+	/* Imagery
+	================================ */
+
+	.feat-img {
+		width: 50%;
+		float: left;
+		margin-right: 25px;
+	}
+}
