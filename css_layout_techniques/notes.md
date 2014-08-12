@@ -209,3 +209,14 @@ it uses the browser window.
 
 One issue with absolutely positioning elements is that there must be a HEIGHT on the parent element. 
 Otherwise, the elements will collapse and not be visible.
+
+### Fixed Positioning
+
+Fixed positioning means that an element will stay fixed within the browser window even as
+the page scrolls.
+
+In the case of creating sticky headers - simply position the header fixed with a z-index of something greater
+than any other element on the page. This will allow, as you scroll, the content to flow underneath the header.
+
+Fixed positioning takes elements out of the normal document flow. Therefore, padding-top should be added to the body
+that is equal to the height of the header. 

@@ -94,6 +94,10 @@ body, {
 	.col {
 		height: 100%;
 	}
+	
+	body {
+		padding-top: 100px;
+	}
 	/*.main-wrapper {*/
 	/*	width: 95%;*/
 	/*	margin: auto;*/
@@ -103,7 +107,10 @@ body, {
 	================================ */
 	
 	.main-header {
-		position: relative;
+		position: fixed;
+		width: 100%;
+		z-index: 1;
+		top: 0;
 	}
 	.main-logo,
 	.main-nav {
