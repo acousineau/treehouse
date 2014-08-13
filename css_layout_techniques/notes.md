@@ -247,3 +247,8 @@ that is equal to the height of the header.
 	margin: auto;
 }
 ```
+
+## Flexbox Layout
+
+### Building Navigation with Flexbox
+

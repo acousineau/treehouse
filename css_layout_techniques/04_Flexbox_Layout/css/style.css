@@ -1,0 +1,116 @@
+
+/* Page Styles
+================================ */
+
+* {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+body {
+	font: normal 1.1em/1.5 sans-serif;
+	color: #222;
+	background-color: #edeff0;
+}
+
+/* Layout Element Colors
+================================ */
+
+.main-header       { background-color: #384047; }
+.main-nav a        { background-color: #3f8abf; }
+.main-logo a       { background-color: #5fcf80; }
+.primary-content   { background-color: #caebf6; }
+.main-footer       { background-color: #b7c0c7; }
+
+/* Main Layout
+================================ */
+
+.main-header,
+.col {
+	padding: 20px;
+}
+.main-logo a, 
+.main-nav a {
+	display: block;
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	padding: 8px 15px;
+	border-radius: 5px;
+}
+.main-footer {
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.extra-content,
+.main-banner {
+	display: none;
+}
+
+/* Imagery
+================================ */
+
+.feat-img {
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: solid 1px;
+	padding: 5px;
+}
+
+/* Media Queries
+================================ */
+
+@media (min-width: 1px) and (max-width: 768px) {
+	.main-nav li {
+		margin-top: 15px;
+	}
+	.main-nav li:first-child {
+		margin-top: 0;
+	}
+}
+
+@media (min-width: 769px) {
+
+	body {
+		padding-top: 120px;
+	}
+
+	/* Header and Banner Layout
+	================================ */
+
+	.main-header {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		height: 120px;
+	}
+	.main-banner {
+		background: #dfe2e4;
+		text-align: center;
+		padding: 50px 15px;
+		display: block;
+	}
+
+	/* Column Layout
+	================================ */
+
+	.col {
+		width: 30%;
+		display: inline-block;
+		margin-right: -5px;
+		vertical-align: top;
+	}
+	.primary-content {
+		width: 40%;
+	}
+
+	/* Imagery
+	================================ */
+
+	.feat-img {
+		width: 50%;
+		float: left;
+		margin-right: 25px;
+	}
+}
