@@ -252,3 +252,43 @@ that is equal to the height of the header.
 
 ### Building Navigation with Flexbox
 
+First thing in creating a layout with flexbox is a Flex Formatting Context needs to 
+be created. 
+
+```css
+.main-nav {
+    display: flex;
+}
+```
+Next step is to style child elements appropriately
+```css
+.main-nav li {
+    align-self: center;
+    flex-grow: 1; /* Represents the ratio of free space we want the items to take up */
+    margin-right 8px;
+    margin-left: 8px;
+}
+.main-logo:first-child {
+    margin-right: auto;
+}
+```
+
+To work in Safari and other browsers - vendor prefixes are needed..
+
+```css
+	.main-nav {
+	    display: -webkit-flex;
+		display: flex;
+	}
+	.main-nav li {
+	    -webkit-align-self: center;
+		align-self: center;
+		-webkit-flex-grow: 1;
+		flex-grow: 1;
+	}
+	.main-logo:first-child {
+	    -webkit-flex-grow: 1.5;
+		flex-grow: 1.5;
+	}
+```
+
