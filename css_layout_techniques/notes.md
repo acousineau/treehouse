@@ -292,3 +292,7 @@ To work in Safari and other browsers - vendor prefixes are needed..
 	}
 ```
 
+### Animating Flexbox
+
+See the style sheet for notes in this commit
+

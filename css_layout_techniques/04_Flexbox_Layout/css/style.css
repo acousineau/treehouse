@@ -12,6 +12,20 @@ body {
 	background-color: #edeff0;
 }
 
+/* Icon Fonts
+================================ */
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot');
+	src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/icomoon.woff') format('woff'),
+		url('../fonts/icomoon.ttf') format('truetype'),
+		url('../fonts/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
 /* Layout Element Colors
 ================================ */
 
@@ -36,6 +50,20 @@ body {
 	text-align: center;
 	padding: 8px 15px;
 	border-radius: 5px;
+	position: relative;
+	overflow: hidden;
+}
+.main-nav a::before {
+	font-family: 'icomoon';
+	content: attr(data-icon);
+	color: #fff;
+	position: absolute;
+	top: 10px;
+	left: -30%;
+	transition: 0.4s;
+}
+.main-nav a:hover::before {
+	left: 10%;
 }
 .main-footer {
 	text-align: center;
@@ -97,6 +125,11 @@ body {
 		flex-grow: 1;
 		margin-left: 8px;
 		margin-right: 8px;
+		transition: 0.5s;
+	}
+	.main-nav li:hover:not(.main-logo) {
+		-webkit-flex-grow: 2;
+		flex-grow: 2;
 	}
 	.main-logo:first-child {
 	    -webkit-flex-grow: 1.5;
