@@ -157,9 +157,9 @@ body {
 	.main-banner {
 		display: block; /*Unhide from mobile view */
 	}
-	.content-row {
-		position: relative;
-	}
+	/*.content-row {*/
+	/*	position: relative;*/
+	/*}*/
 	.col {
 		width: 30%;
 		/*display: inline-block;*/
