@@ -151,7 +151,27 @@ body {
 
 	/* Column Layout
 	================================ */
-
+	
+	.content-row {
+		display: -webkit-flex;
+		display: flex;
+	}
+	
+	.col {
+		-webkit-flex: 1;
+		flex: 1;
+	}
+	
+	.primary-content {
+		-webkit-flex: 2;
+		flex: 2;
+		order: -1;
+	}
+	
+	.extra-content {
+		order: 1;
+	}
+	
 	/* Imagery
 	================================ */
 
