@@ -66,6 +66,10 @@ body {
 .main-nav a:hover::before {
 	left: 10%;
 }
+
+	.no-flexbox .main-nav a:hover::before {
+		left: 18px;
+	}
 .main-footer {
 	text-align: center;
 	padding-top: 5px;
@@ -132,6 +136,11 @@ body {
 		margin-right: 8px;
 		transition: 0.5s;
 	}
+		.no-flexbox .main-nav li {
+			display: inline-block;
+			margin-top: 12px;
+			width: 150px;
+		}
 	.main-nav li:hover:not(.main-logo) {
 		-webkit-flex-grow: 2;
 		flex-grow: 2;
@@ -161,6 +170,11 @@ body {
 		-webkit-flex: 1;
 		flex: 1;
 	}
+	
+		.no-flexbox .col {
+			float: left;
+			width: 33.3%;
+		}
 	
 	.primary-content {
 		-webkit-flex: 2;

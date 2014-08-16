@@ -300,3 +300,17 @@ See the style sheet for notes in this commit
 
 See the style sheet for notes in this commit
 
+### Providing Fallbacks with Modernizr
+
+Modernizr detects if a feature is supported by the browser. If it doesn't, it falls back
+to custom css we write in the style sheet.
+
+The sign that tells if modernizr is working is if when you inspect the DOM and look at the
+```<html>``` node - you will see ```<html class=" js flexbox">```
+
+This indicates that JS is enabled and that flexbox is supported. If the class ```no-flexbox```
+is shown - then the browser does not support flexbox.
+
+If the site is viewed in IE9 - you can tell that flexbox is NOT supported - so we need to add styles
+that clean up the layout when flexbox isn't available.
+
