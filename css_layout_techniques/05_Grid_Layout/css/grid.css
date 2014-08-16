@@ -2,6 +2,13 @@
 /* Global
 ================================ */
 
+.grid-container {
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 img {
 	width: 100%;
 }
@@ -10,7 +17,26 @@ img {
 ================================ */
 
 @media (min-width: 768px) {
+	
+	/* Columns
+	=========================================== */
 
+	.grid-container > [class^="grid-"] {
+		float: left;	/* */
+		min-height: 1px; /* Will be needed for safety - prevent columns from horizontally collapsing */
+		padding-left: 10px;
+		padding-right: 10px;
+		margin-left: 2%; /* Left column gutters */
+	}
+	
+	.grid-container > [class^="grid-"]:first-child {
+		margin-left: 0;	/* Do not give a gutter to our first column */
+	}
+	
+	.grid-container > [class^="grid-"]:last-child {
+		float: right; /* Ensure grid container is flush with right side of page */
+	}
+	
 	/* Columns are 65px wide, with 20px gutters
 	=========================================== */
 	
@@ -55,7 +81,8 @@ img {
 	/* Clearfix
 	================================ */
 
-	.group:after {
+	.group:after,
+	.grid-container:after {
 	  content: " ";
 	  display: table;
 	  clear: both;

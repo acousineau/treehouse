@@ -339,3 +339,7 @@ Now calculate 2 columns and gutter:
 
 Now calculate 3 columns and 2 gutters:
 ((65 * 3) + (20 * 2)) / 1000 = 0.235 = 23.5%
+
+### Creating a Grid Container
+
+See notes in grid.css file associated with this commit
