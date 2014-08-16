@@ -296,3 +296,7 @@ To work in Safari and other browsers - vendor prefixes are needed..
 
 See the style sheet for notes in this commit
 
+### Flexbox Columns
+
+
+
