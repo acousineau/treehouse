@@ -327,3 +327,15 @@ The Components:
 Max Number of Columns: 12
 Fixed Pixel Values for Context: 65px
 Margin (Gutter) for separation: All but first column in row a 20px left gutter
+
+### Creating Fluid Grid Columns
+
+Target / Context = Result - use to calculate how wide our columns should be
+
+65 / 1000 = 0.065 = 6.5%
+
+Now calculate 2 columns and gutter:
+(65 + 65 + 20) / 1000 = 0.15 = 15%
+
+Now calculate 3 columns and 2 gutters:
+((65 * 3) + (20 * 2)) / 1000 = 0.235 = 23.5%
