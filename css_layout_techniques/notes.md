@@ -314,3 +314,16 @@ is shown - then the browser does not support flexbox.
 If the site is viewed in IE9 - you can tell that flexbox is NOT supported - so we need to add styles
 that clean up the layout when flexbox isn't available.
 
+## Grid Layout
+
+### Understanding Grids
+
+Alignment, Positioning, Floating, Clearfix are usually built into a Grid System. Very versatile and simple, 
+usually responsive as well.
+
+We just need to think of our layout as a set of rows and columns.
+
+The Components:
+Max Number of Columns: 12
+Fixed Pixel Values for Context: 65px
+Margin (Gutter) for separation: All but first column in row a 20px left gutter
