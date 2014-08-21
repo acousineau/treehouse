@@ -127,3 +127,28 @@ Options can be grouped further with the ```<optgroup>``` element
     </optgroup>
 </select>
 ```
+
+### Radio Buttons
+
+Should be used if there are 5 or less options to choose from
+
+Shows all the options at once, but like Select menus, you can only choose one
+
+```html
+<label>Age:</label>
+
+<input type="radio" id="under_13" value="under_13" name="user_age">
+<label for="under_13" class="light">Under 13</label>
+
+<br>
+
+<input type="radio" id="over_13" value="over_13" name="user_age">
+<label for="over_13" class="light">13 or Older</label>
+```
+
+ID and VALUE: Should be the same within element
+
+NAME: Same across all radio buttons in desired group - allows user to only select 1 within
+the named group.
+
+TYPE: radio - Radio Buttons
