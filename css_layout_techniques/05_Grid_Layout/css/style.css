@@ -65,6 +65,9 @@ img {
 		top: 0;
 		width: 100%;
 	}
+	.main-nav {
+		text-align: right;
+	}
 	.main-nav li {
 		margin-top: 6px;
 		margin-left: 10px;

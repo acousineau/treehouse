@@ -343,3 +343,8 @@ Now calculate 3 columns and 2 gutters:
 ### Creating a Grid Container
 
 See notes in grid.css file associated with this commit
+
+### Testing our Grid
+
+See notes in index.html file associated with this commit
+
