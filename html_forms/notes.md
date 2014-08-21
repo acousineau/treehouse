@@ -53,3 +53,40 @@ There are 2 other types - reset, and button
 
 Reset: Clears all form data
 Button: No default behavior - intended to use with JS
+
+## Organizing Forms
+
+### The Label Element
+
+Labels are used to describe to the user what type of information should be entered
+to it's corresponding field.
+
+```html
+<label for="name">Name:</label>
+<input type="text" id="name" name="user_name">
+```
+
+For: Corresponds to the ID attribute to field. Also provides focus to corresponding
+form field when clicked
+
+### Fieldsets and Legends
+
+Fieldsets allow you to group together particular sections of a form
+
+Legends allow you to label fieldsets.
+
+```html
+<form>
+    <fieldset>
+        <legend><span class="number">1</span>You Basic Info:</legend>
+        <input type="text" id="name" name="user_name">
+        <input type="email" id="email" name="user_email">
+    </fieldset>
+    
+    <fieldset>
+        <legend><span class="number">2</span>You Profile:</legend>
+        <textarea id="bio" name="user_bio"></textarea>
+    </fieldset>
+</form>
+```
+
