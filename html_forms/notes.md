@@ -93,3 +93,37 @@ Legends allow you to label fieldsets.
 ## Choosing Options
 
 ### Select Menus
+
+Gives finite options to the user to select from.
+
+```html
+<select name="user_job" id="job">
+    <option value="frontend_developer">Front End Developer</option>
+    <option value="php_developer">PHP Developer</option>
+    <option value="python_developer">Python Developer</option>
+</select>
+```
+
+Options can be grouped further with the ```<optgroup>``` element
+
+```html
+<select name="user_job" id="job">
+    <optgroup label="Web">
+        <option value="frontend_developer">Front End Developer</option>
+        <option value="php_developer">PHP Developer</option>
+        <option value="python_developer">Python Developer</option>
+        <option value="rails_developer">Rails Developer</option>
+        <option value="web_designer">Web Designer</option>
+        <option value="wordpress_developer">WordPress Developer</option>
+    </optgroup>
+    <optgroup label="Mobile">
+        <option value="android_developer">Android Developer</option>
+        <option value="ios_developer">iOS Developer</option>
+        <option value="mobile_designer">Mobile Designer</option>
+    </optgroup>
+    <optgroup label="Business">
+        <option value="business_owner">Business Owner</option>
+        <option value="freelancer">Freelancer</option>
+    </optgroup>
+</select>
+```
