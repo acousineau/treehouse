@@ -152,3 +152,22 @@ NAME: Same across all radio buttons in desired group - allows user to only selec
 the named group.
 
 TYPE: radio - Radio Buttons
+
+### Checkboxes
+
+Used for when there is a predefined group of selectable values, but the user should
+be able to select any number of them.
+
+```html
+<input type="checkbox" id="development" value="interest_development" name="user_interest">
+<label class="light" for="development">Development</label><br>
+
+<input type="checkbox" id="design" value="interest_design" name="user_interest">
+<label class="light" for="design">Design</label><br>
+
+<input type="checkbox" id="business" value="interest_business" name="user_interest">
+<label class="light" for="business">Business</label>
+```
+
+NAME: Determines group of checkboxes
+FOR: Corresponds to ID of element
