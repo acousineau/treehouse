@@ -92,7 +92,7 @@ Math.round(44.49); // 44
 // Random
 //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-Math.random(); // Generates random number between 0 and 1
+Math.random(); // Generates random number between 0 =< 1
 
 // Get values that exist on a die - 1 => 6
 Math.floor(Math.random() * 6) + 1;
