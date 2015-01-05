@@ -23,6 +23,3 @@ message.length
 * A string, the document, the browser's console
 * Objects have properties, such as the length of a string
 * Objects have methods, which are actions the objects can perform
-
-
-## Working with Numbers
