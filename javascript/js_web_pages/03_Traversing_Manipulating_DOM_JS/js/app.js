@@ -52,22 +52,44 @@ var createNewTaskElement = function(taskString) {
 	}
 
 	else {
-		throw new Error('Must enter ToDo item to add it to the list');
+		throw 'You must enter text before adding a task';
 	}
 }
 
 // Add Tasks
 var addTask = function() {
 	console.log("Add task...");
-	//create new list item
-	var listItem = createNewTaskElement(taskInput.value);
 
-	//Append listItem to incompleteTaskHolder
-	incompleteTaskHolder.appendChild(listItem);
-	bindTaskEvents(listItem, markTaskComplete);
+	//Get parent of taskInput
+	var p = taskInput.parentNode;
+	var error = p.querySelector('.error');
+	
+	try {
+		//create new list item
+		var listItem = createNewTaskElement(taskInput.value);
 
-	//Change task input value to be ''
-	taskInput.value = '';
+		//Remove any errors that may be on the page
+		if (error) {
+			error.classList.add('hide');
+		}
+
+		//Append listItem to incompleteTaskHolder
+		incompleteTaskHolder.appendChild(listItem);
+		bindTaskEvents(listItem, markTaskComplete);
+
+		//Change task input value to be ''
+		taskInput.value = '';
+	}
+
+	catch(e) {
+		//Create error
+		var error = document.createElement('div');
+		error.classList.add('error');
+		error.innerText = e;
+
+		//Append error to page add task area on page
+		p.appendChild(error);
+	}
 }
 
 // Edit Tasks
