@@ -56,5 +56,35 @@ var markTaskIncomplete = function() {
 		//append the task to #incomplete-tasks
 }
 
+//Bind task events
+var bindTaskEvents = function(taskListItem, checkboxEventHandler) {
+	//select taskListItem's children
+	var checkBox = taskListItem.querySelector('input[type=checkbox]');
+	var editButton = taskListItem.querySelector('button.edit');
+	var deleteButton = taskListItem.querySelector('button.delete');
+	
+	//bind the editTask to edit button
+	editButton.onclick = editTask;
+	
+	//bind the deleteTask to the delete button
+	deleteButton.onclick = deleteTask;
+
+	//bind TaskComplete/TaskIncomplete to checkbox
+	checkBox.onchange = checkboxEventHandler;
+}
+
 // Set the click handler to the addTask function
 addButton.onclick = addTask;
+
+// Cycle over the incompleteTaskHolder ul list items
+for (var i = 0, ilen = incompleteTaskHolder.children.length; i < ilen; i++) {
+	//bind events to list item's children (markTaskComplete)
+	bindTaskEvents(incompleteTaskHolder.children[i], markTaskComplete);
+}
+
+// Cycle over the completeTaskHolder ul list items
+for (var j = 0, clen = completeTaskHolder.children.length; j < clen; j++) {
+	//bind events to list item's children (markTaskIncomplete)
+	console.log(completeTaskHolder);
+	bindTaskEvents(completeTaskHolder.children[j], markTaskIncomplete);
+}
