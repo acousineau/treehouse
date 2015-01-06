@@ -6,54 +6,133 @@ var addButton = document.getElementsByTagName('button')[0];//first button
 var incompleteTaskHolder = document.getElementById('incomplete-tasks'); //incomplete-tasks
 var completeTaskHolder = document.getElementById('complete-tasks');//complete-tasks
 
+// New Task List Item
+var createNewTaskElement = function(taskString) {
+
+	// Make sure value was entered into input
+	if (taskString) {
+		//Create List Item
+		var listItem = document.createElement('li');
+		
+		//input checkbox
+		var checkBox = document.createElement('input'); //checkbox
+		
+		//label
+		var label = document.createElement('label');
+
+		//input for text editing
+		var editInput = document.createElement('input'); //text field
+
+		//button.edit
+		var editButton = document.createElement('button'); //button
+		
+		//button.delete
+		var deleteButton = document.createElement('button'); //button
+
+		//Each element needs modifying
+		checkBox.type = 'checkbox';
+		editInput.type = 'text';
+
+		editButton.innerText = "Edit";
+		editButton.className = "edit";
+
+		deleteButton.innerText = "Delete";
+		deleteButton.className = "delete";
+
+		label.innerText = taskString;
+
+		//Each element needs appending
+		listItem.appendChild(checkBox);
+		listItem.appendChild(label);
+		listItem.appendChild(editInput);
+		listItem.appendChild(editButton);
+		listItem.appendChild(deleteButton);
+
+		return listItem;
+	}
+
+	else {
+		throw new Error('Must enter ToDo item to add it to the list');
+	}
+}
+
 // Add Tasks
 var addTask = function() {
-	console.log('Add task...');
-	// when button is pressed
-	// create a task
-		//create new list item
-			//input checkbox
-			//label
-			//input for text editing
-			//button.edit
-			//button.delete
+	console.log("Add task...");
+	//create new list item
+	var listItem = createNewTaskElement(taskInput.value);
 
-		//Each element needs to be modified and appended
+	//Append listItem to incompleteTaskHolder
+	incompleteTaskHolder.appendChild(listItem);
+	bindTaskEvents(listItem, markTaskComplete);
+
+	//Change task input value to be ''
+	taskInput.value = '';
 }
 
 // Edit Tasks
 var editTask = function() {
 	console.log('Edit task...');
-	// when edit button is pressed
+
+	var listItem = this.parentNode;
+
+	var editInput = listItem.querySelector('input[type=text]');
+	var label = listItem.querySelector('label');
+	var editButton = listItem.querySelector('button.edit')
+
+	var containsClass = listItem.classList.contains('editMode');
+
 	// if class of parent is 'editMode'
+	if (containsClass) {
 		//switch from editMode
 		//make label text become input's value
+		label.innerText = editInput.value;
+
+		//change inner text of edit button to 'Save'
+		editButton.innerText = 'Edit';
+	}
 	//else
+	else {
 		//switch to editMode
 		//input value becomes the label text
-	//toggle edit mode
+		editInput.value = label.innerText;
+
+		//change inner text of edit button to 'Save'
+		editButton.innerText = 'Save';
+	}
+
+	//toggle edit mode on the list item
+	listItem.classList.toggle('editMode');
 }
 
 
 // Delete Tasks
 var deleteTask = function() {
 	console.log('Delete task...');
-	//when delete button is pressed
-		//remove parent list item from the unordered list
+	
+	var listItem = this.parentNode;
+	var ul = listItem.parentNode
+
+	//Remove parent list item from the unordered list
+	ul.removeChild(listItem);
 }
 
 // Mark task as complete
 var markTaskComplete = function() {
 	console.log('Complete task...');
-	//when checkbox is checked
-		//append the task list item to #complete-tasks
+	//Append the task list item to #complete-tasks
+	var listItem = this.parentNode
+	completeTaskHolder.appendChild(listItem);
+	bindTaskEvents(listItem, markTaskIncomplete);
 }
 
 // Mark task as incomplete
 var markTaskIncomplete = function() {
 	console.log('Incomplete task...');
-	//when the checkbox is unchecked
-		//append the task to #incomplete-tasks
+	//Append the task list item to #incomplete-tasks
+	var listItem = this.parentNode
+	incompleteTaskHolder.appendChild(listItem);
+	bindTaskEvents(listItem, markTaskComplete);
 }
 
 //Bind task events
@@ -73,8 +152,15 @@ var bindTaskEvents = function(taskListItem, checkboxEventHandler) {
 	checkBox.onchange = checkboxEventHandler;
 }
 
+// var ajaxRequest = function(){
+// 	console.log("AJAX Request");
+// }
+
 // Set the click handler to the addTask function
-addButton.onclick = addTask;
+addButton.addEventListener('click', addTask);
+// addButton.addEventListener('click', ajaxRequest);
+
+// addButton.onclick = ajaxRequest;
 
 // Cycle over the incompleteTaskHolder ul list items
 for (var i = 0, ilen = incompleteTaskHolder.children.length; i < ilen; i++) {
@@ -85,6 +171,5 @@ for (var i = 0, ilen = incompleteTaskHolder.children.length; i < ilen; i++) {
 // Cycle over the completeTaskHolder ul list items
 for (var j = 0, clen = completeTaskHolder.children.length; j < clen; j++) {
 	//bind events to list item's children (markTaskIncomplete)
-	console.log(completeTaskHolder);
 	bindTaskEvents(completeTaskHolder.children[j], markTaskIncomplete);
 }
