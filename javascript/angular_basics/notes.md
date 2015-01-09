@@ -58,3 +58,130 @@ $scope.$watch('message.text', function(newValue, oldValue){
 ```
 
 ## Services and Dependencies
+
+### Dependency Injection
+
+Each component is responsible for declaring it's own dependencies. In contrast to requiring that whatever initializes that component be responsible for knowing what the dependencies are in advance.
+
+```javascript
+angular.module('treehouseCourse', [])
+	.controller('stageCtrl', function($scope, $http) {
+		//do stuff
+	});
+```
+
+However - there is one caveat:
+Because dependency injection is dependent on names, and minification effectively replaces the names of the parameters passed to functions, Angular provides an Array Notation to allow the passing of names even when minified.
+
+```javascript
+angular.module('treehouseCourse', [])
+	.controller('stageCtrl', ['$scope', '$http', function($scope, $http) {
+		//do stuff
+	}]);
+```
+
+There are several minification tools that will do the above for you:
+* ng-annotate: https://github.com/olov/ng-annotate
+
+### $http Service
+
+A service for making AJAX calls and handling their responses.
+
+A 'Promise' object is returned by the $http.get method.
+
+```javascript
+angular.module('treehouseCourse', [])
+	.controller('stageCtrl', ['$scope', '$http', function($scope, $http) {
+		$scope.people = [];
+
+		$http.get('people.json')
+			.success(function(response) {
+				$scope.people = response;
+			})
+			.error(function(err){
+				alert(err);
+			});
+
+		$scope.save = function(person) {
+			$http.post('people.json', person)
+				.success(function(response) {
+					alert('Success, person saved');
+				})
+				.error(function(err) {
+					alert(err);
+				});
+		};
+	}]);
+```
+
+### Writing Own Service/Factory
+
+**Singletons and Models** - Objects that should only ever have one instance within our application
+
+Controllers and Directives are largely stateless - meaning if route changes to display new page, or if element a directive is in is removed and then returned - any internal variables are reset
+
+Services/Factories - if there is data that needs to persist across pages or throughout lifecycle of app - service or factory is the best place to store it.
+
+```javascript
+angular.module('treehouseCourse', [])
+	.factory('People', function(){
+		var people = [];
+		var otherPeople = [
+			{
+				"name": "Jane",
+				"profession": "Designer",
+				"hometown": "New York, NY"
+			},
+			{
+				"name": "Jerry",
+				"profession": "Salesman",
+				"hometown": "Detroit, MI"
+			}
+		];
+
+		return {
+			get: function() {
+				return people;
+			},
+			add: function() {
+				people.push(otherPeople.pop());
+			},
+			remove: function (person) {
+				otherPeople.push(person);
+				people = _.without(people, person);
+			},
+			save: function (person) {
+
+			}
+		}
+	})
+	.controller('stageCtrl', function ($scope, People) {
+
+		$scope.people = People.get();
+
+		$scope.add = People.add
+
+		$scope.remove = People.remove
+
+		$scope.edit = function (person) {
+			$scope.editingPerson = person;
+		}
+
+		$scope.save = People.save
+	});
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
