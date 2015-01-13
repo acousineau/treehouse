@@ -426,6 +426,42 @@ _____________________________________
 </p>
 ```
 
+### Using the Link Function
+
+```html
+<input datepicker datepicker-format="mm-dd-yy"/>
+```
+
+```javascript
+angular.module('treehouseCourse' [])
+	.directive('datepicker', function(){
+		return {
+			link: function($scope, $element, $attrs) {
+				var isInitialized = false;
+
+				$attrs.$observe('datepickerFormat', function(newValue) {
+					if (isInitialized) {
+						$element.datepicker('option', 'dateFormat', newValue);
+					}
+
+					else if (newValue) {
+						$element.datepicker({
+							dateFormat: newValue
+						});
+						isInitialized = true;
+					}
+				});
+
+				/* Another example
+				$element.datepicker({
+					dateFormat: $attrs.datepickerFormat
+				});
+				*/
+			}
+		}
+	});
+```
+
 
 
 
