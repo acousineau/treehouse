@@ -237,14 +237,194 @@ angular.module('treehouseCourse', [])
 	});
 ```
 
+## An Introduction to Directives
 
+### What is a Directive
 
+From the user's perspective, if it is a collection of functionality that they interact with - it can be a directive
 
+What makes a Directive?
 
+* The attribute or set of attributes that we use to declare an HTML node
 
+* The JavaScript that implements that functionality
 
+```javascript
 
+angular.module('treehouseCourse', [])
+	.directive('contactCard', function(){
+	return {
+		// Can be either a string of raw HTML or can be a template.url
+		// which is brought in from external template
+		template: '<div class="contact-card">' +
+		'<p class="name">{{contact.name}}</p>' +
+		'<p class="profession">{{contact.profession}}</p>' +
+		'</div>',
+		
+		//Tells angular to put inside designated node or replace it entirely
+		replace: false,
+		
+		//Tells angular
+		scope: {
+			'contact': '=contactCard'
+		},
+		
+		// Where all JS magic happens to add custom logic and functionality
+		// to directive
+		link: function ($scope, $element, $attrs) {
 
+		}
+	};
+});
+
+```
+
+### Connective between HTML and JavaScript
+
+#### How to label Directives
+* Within HTML, use dashes, like this: **contact-card**
+* Within JavaScript, use CamelCase, like this: **contactCard**
+
+#### EACM
+* E = Element
+* A = Attribute
+* C = Classname
+* M = Comment
+
+#### How to insert a Directive into the DOM
+
+* By adding an **attribute** to an element, like this:
+
+```html
+<div contact-card="person"></div>
+```
+
+* By creating a new **element**, like this:
+
+```html
+<contact-card></contact-card>
+```
+
+* By giving an element a **classname**, like this:
+
+```html
+<div class="contact-card"></div>
+```
+
+* By using an HTML **comment**, like this:
+
+```html
+<!--contact-card-->
+```
+
+### Understanding ```$scope```
+
+* Witihin controllers and directives - serves as data pipeline between JS and HTML views.
+* Makes certain methods accessible for buttons and other inputs.
+
+At the base of all Angular Apps is the ```$rootScope```
+
+* The top level data object that will manage the lifecycle of our web app
+* Responsible for firing all digest cycles when a property changes
+* Another service like ```$http```
+
+```javascript
+angular.module('treehouseCourse', [])
+	.controller('ScopeCtrl', function ($scope) {
+		var $parent = $scope.$new();
+		$parent.courseName = 'AngularJS Overview';
+
+		var $child = $parent.$new();
+
+		// outputs "AngularJS Overview"
+		console.log($child.courseName);
+
+		$child.courseName = 'Diving into Web Apps';
+
+		// outputs "Diving into Web Apps"
+		console.log($child.courseName);
+		// still outputs "AngularJS Overview"
+		console.log($parent.courseName);
+
+		// Best practice when dealing with data that need to span
+		// multiple scopes
+		// Use an object instead
+		$parent.course = {
+			name: 'AngularJS Overview',
+			id: 123
+		};
+
+		// When writing to course.name - JS will read course property from parent scope
+		// and then set name property on that
+		$child.course.name = 'Diving into Web App';
+
+		// Now both output "Diving into Web Apps"
+		console.log($child.course.name);
+		console.log($parent.course.name);
+	})
+```
+
+When creating a new **controller**, Angular will always create a new child $scope for that controller
+
+**Directives** automatically receive the $scope object as the first argument to the link function. They can specify 1 of 3 ways to receive it
+* Default - No new scope is created for directive - receives same scope instance of the parent HTML node ($rootScope, Controller, Higher level directive)
+
+```javascript
+angular.module('treehouseCourse' [])
+	// New Scope - exactly the same as controllers receive
+	.directive('newScope', function(){
+		return {
+			scope: true,
+			link: function($scope, $element, $attrs) {
+				// this scope prototypically inherits from the parent element
+			}
+		}
+	})
+	// Isolate Scope
+	.directive('isolateScope', function() {
+		return {
+			scope: {
+				'myBoundProperty': '=myBoundProperty'
+			},
+			link: function($scope, $element, $attrs) {
+				// This scope inherits nothing from the parent
+				// except 'myBoundProperty', which is two-way bound
+			}
+		}
+	})
+```
+
+### Built-in Directives
+
+```ng-model``` - The most common directive, and the key to two-way data binding
+
+This directive should always have a 'dot', meaning it's accessing a property nested inside an object, such as:
+
+```ng-model="person.name"```
+
+_____________________________________
+
+```ng-click``` - Allows us to fire actions in response to the user clicking on an element
+_____________________________________
+
+```ng-show``` and ```ng-hide``` - Allow to easily display or hide an element based on conditional expression
+
+```ng-show="person.email"```
+```ng-hide="!person.email"```
+_____________________________________
+
+```ng-repeat``` - This directive lets you iterate over a collection and display one or more elements for each instance
+
+```html
+<div ng-repeat="person in people track by person.id">
+	<div contact-card="person"></div>
+</div>
+
+<p class="line-item" ng-repeat="(food, cost) in receipt">
+	<span class="item">{{food}}</span>
+	<span class="cost">${{cost}}</span>
+</p>
+```
 
 
 
