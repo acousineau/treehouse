@@ -409,8 +409,8 @@ _____________________________________
 
 ```ng-show``` and ```ng-hide``` - Allow to easily display or hide an element based on conditional expression
 
-```ng-show="person.email"```
-```ng-hide="!person.email"```
+```ng-show="person.email"``` - Example ng-show
+```ng-hide="!person.email"``` - Example ng-hide
 _____________________________________
 
 ```ng-repeat``` - This directive lets you iterate over a collection and display one or more elements for each instance
