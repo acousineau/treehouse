@@ -462,6 +462,11 @@ angular.module('treehouseCourse' [])
 	});
 ```
 
+## Extending Inputs
+
+### Attaching a Datepicker
+
+
 
 
 
