@@ -400,17 +400,18 @@ angular.module('treehouseCourse' [])
 
 This directive should always have a 'dot', meaning it's accessing a property nested inside an object, such as:
 
-```ng-model="person.name"```
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+```ng-model="person.name"``` - Setting a value
+
+_____________________________________
 
 ```ng-click``` - Allows us to fire actions in response to the user clicking on an element
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+_____________________________________
 
 ```ng-show``` and ```ng-hide``` - Allow to easily display or hide an element based on conditional expression
 
 ```ng-show="person.email"```
 ```ng-hide="!person.email"```
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+_____________________________________
 
 ```ng-repeat``` - This directive lets you iterate over a collection and display one or more elements for each instance
 
