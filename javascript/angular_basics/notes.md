@@ -464,9 +464,48 @@ angular.module('treehouseCourse' [])
 
 ## Extending Inputs
 
-### Attaching a Datepicker
+### A Deeper Dive into ```ng-model```
 
+**NgModelController** - Connection (API) between custom logic and our own directive and the value property that we're binding to. We can get access to the controllers within directives using the ```require``` property.
 
+The require property allows that any custom input created will have a require ngModel on its directive definition object.
 
+What does NgModelController provide?
+* ```$setViewValue``` Method
+* ```$render``` Method
+* ```$parsers```
+* ```$formatters```
 
+#### ```$setViewValue```
+
+Value that is used to pass along any data changes that come from our input. Almost always triggered as part of an event listener.
+
+Why don't we just set the property directly? Using ```$setViewValue``` insures our data has gone through the full pipeline. Including validation and possibly transformations.
+
+#### ```$render```
+
+Control data flowing in the opposite direction - to the user.
+
+It is simply defined and ```ngModel``` calls it every time data changes somewhere else.
+
+For example: Two fields bound to same property (start date)
+* Custom datepicker
+* Standard Text Field
+
+We want to update the datepicker to highlight the currently selected date. When ```$render``` is called with new value - we can pass that along to the datepicker as well.
+
+```$render``` receives a value that's been fully processed by the ngModel pipeline.
+
+#### ```$parsers```
+
+It is an array of functions that translates the value that comes from the view. Often passed in via ```$setViewValue```
+
+For most inputs, like a text field, this step is unnecessary becaust both the view and model have the same value.
+However, for a datepicker - we want to store it in a precise way like milliseconds or standard iso 8601 format.
+
+Can also be used for validation - proper email formatting or making sure date selected is in a specified range.
+
+#### ```$formatters```
+
+Allows to take the original model value and transform it into what we want to display to our end user. (Generally if a parser is set up, a formatter will also be needed, unless the parser is only used for validity)
 
