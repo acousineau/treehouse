@@ -509,3 +509,64 @@ Can also be used for validation - proper email formatting or making sure date se
 
 Allows to take the original model value and transform it into what we want to display to our end user. (Generally if a parser is set up, a formatter will also be needed, unless the parser is only used for validity)
 
+### Attaching a Datepicker
+
+```html
+<div class="main">
+	<div class="my-picker">
+		<h3>Date Picker</h3>
+		<label>
+			Date: {{course.date}}
+			<div datepicker datepicker-format="mm-dd-yy" ng-model="course.date"></div>
+		</label>
+	</div>
+	<div class="other-picker">
+		<h4>Select a date:</h4>
+		<select ng-model="course.date">
+			<option value="01-01-2014">01-01-2014</option>
+			<option value="10-31-2014">10-31-2014</option>
+			<option value="12-31-2014">12-31-2014</option>
+		</select>
+	</div>
+</div>
+```
+
+```javascript
+angular.module('treehouseCourse', [])
+	.directive('datepicker', function(){
+		return {
+			require: 'ngModel', // Require the ngModel Controller
+			link: function($scope, $element, $attrs, ngModelCtrl) {
+				console.log(ngModelCtrl);
+				var initializedDatepicker = false;
+				$attrs.observe('datepickerFormat', function(newValue) {
+					// If we've already initialized this, just update option
+					if (initializedDatepicker) {
+						$element.datepicker('option', 'dateFormat', newValue);
+					// $observe is still called immediately, even if there's no initial value
+					// so we check to confirm there's at least one format set
+					}
+
+					else if (newValue) {
+						$element.datepicker({
+							dateFormat: newValue,
+							onSelect: function(date) {
+								$scope.$apply(function(){
+									ngModelCtrl.$setViewValue(date);
+								})
+							}
+						});
+						initializedDatepicker = true;
+					}
+				});
+
+				ngModelCtrl.$render = function() {
+					$element.datepicker('setDate', ngModelCtrl.$viewValue);
+				};
+			}
+		}
+	});
+```
+
+### Connecting a WYSIWYG Editor
+
