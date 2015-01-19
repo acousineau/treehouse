@@ -567,6 +567,3 @@ angular.module('treehouseCourse', [])
 		}
 	});
 ```
-
-### Connecting a WYSIWYG Editor
-

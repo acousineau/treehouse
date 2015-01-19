@@ -23,17 +23,23 @@ angular.module('treehouseCourse', [])
           }
         });
         
+        // Add formatter to convert markdown into HTML
+        // From data to user
         var converter = new Showdown.converter();
         var formatter = function (markdown) {
           return converter.makeHtml(markdown);
         }
         
+        // Add formatter to $formatters Array
         ngModelCtrl.$formatters.push(formatter);
         
+        // Add parser to ensure the BIO is stored in markdown after editing
+        // From user to data
         var parser = function (html) {
           return toMarkdown(html);
         }
         
+        // Add parser to $parsers Array
         ngModelCtrl.$parsers.push(parser);
 
         ngModelCtrl.$render = function () {
