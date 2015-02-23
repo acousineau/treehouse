@@ -237,15 +237,333 @@ angular.module('treehouseCourse', [])
 	});
 ```
 
+## An Introduction to Directives
 
+### What is a Directive
 
+From the user's perspective, if it is a collection of functionality that they interact with - it can be a directive
 
+What makes a Directive?
 
+* The attribute or set of attributes that we use to declare an HTML node
 
+* The JavaScript that implements that functionality
 
+```javascript
 
+angular.module('treehouseCourse', [])
+	.directive('contactCard', function(){
+	return {
+		// Can be either a string of raw HTML or can be a template.url
+		// which is brought in from external template
+		template: '<div class="contact-card">' +
+		'<p class="name">{{contact.name}}</p>' +
+		'<p class="profession">{{contact.profession}}</p>' +
+		'</div>',
+		
+		//Tells angular to put inside designated node or replace it entirely
+		replace: false,
+		
+		//Tells angular
+		scope: {
+			'contact': '=contactCard'
+		},
+		
+		// Where all JS magic happens to add custom logic and functionality
+		// to directive
+		link: function ($scope, $element, $attrs) {
 
+		}
+	};
+});
 
+```
 
+### Connective between HTML and JavaScript
 
+#### How to label Directives
+* Within HTML, use dashes, like this: **contact-card**
+* Within JavaScript, use CamelCase, like this: **contactCard**
 
+#### EACM
+* E = Element
+* A = Attribute
+* C = Classname
+* M = Comment
+
+#### How to insert a Directive into the DOM
+
+* By adding an **attribute** to an element, like this:
+
+```html
+<div contact-card="person"></div>
+```
+
+* By creating a new **element**, like this:
+
+```html
+<contact-card></contact-card>
+```
+
+* By giving an element a **classname**, like this:
+
+```html
+<div class="contact-card"></div>
+```
+
+* By using an HTML **comment**, like this:
+
+```html
+<!--contact-card-->
+```
+
+### Understanding ```$scope```
+
+* Witihin controllers and directives - serves as data pipeline between JS and HTML views.
+* Makes certain methods accessible for buttons and other inputs.
+
+At the base of all Angular Apps is the ```$rootScope```
+
+* The top level data object that will manage the lifecycle of our web app
+* Responsible for firing all digest cycles when a property changes
+* Another service like ```$http```
+
+```javascript
+angular.module('treehouseCourse', [])
+	.controller('ScopeCtrl', function ($scope) {
+		var $parent = $scope.$new();
+		$parent.courseName = 'AngularJS Overview';
+
+		var $child = $parent.$new();
+
+		// outputs "AngularJS Overview"
+		console.log($child.courseName);
+
+		$child.courseName = 'Diving into Web Apps';
+
+		// outputs "Diving into Web Apps"
+		console.log($child.courseName);
+		// still outputs "AngularJS Overview"
+		console.log($parent.courseName);
+
+		// Best practice when dealing with data that need to span
+		// multiple scopes
+		// Use an object instead
+		$parent.course = {
+			name: 'AngularJS Overview',
+			id: 123
+		};
+
+		// When writing to course.name - JS will read course property from parent scope
+		// and then set name property on that
+		$child.course.name = 'Diving into Web App';
+
+		// Now both output "Diving into Web Apps"
+		console.log($child.course.name);
+		console.log($parent.course.name);
+	})
+```
+
+When creating a new **controller**, Angular will always create a new child $scope for that controller
+
+**Directives** automatically receive the $scope object as the first argument to the link function. They can specify 1 of 3 ways to receive it
+* Default - No new scope is created for directive - receives same scope instance of the parent HTML node ($rootScope, Controller, Higher level directive)
+
+```javascript
+angular.module('treehouseCourse' [])
+	// New Scope - exactly the same as controllers receive
+	.directive('newScope', function(){
+		return {
+			scope: true,
+			link: function($scope, $element, $attrs) {
+				// this scope prototypically inherits from the parent element
+			}
+		}
+	})
+	// Isolate Scope
+	.directive('isolateScope', function() {
+		return {
+			scope: {
+				'myBoundProperty': '=myBoundProperty'
+			},
+			link: function($scope, $element, $attrs) {
+				// This scope inherits nothing from the parent
+				// except 'myBoundProperty', which is two-way bound
+			}
+		}
+	})
+```
+
+### Built-in Directives
+
+```ng-model``` - The most common directive, and the key to two-way data binding
+
+This directive should always have a 'dot', meaning it's accessing a property nested inside an object, such as:
+
+```ng-model="person.name"``` - Setting a value
+
+_____________________________________
+
+```ng-click``` - Allows us to fire actions in response to the user clicking on an element
+_____________________________________
+
+```ng-show``` and ```ng-hide``` - Allow to easily display or hide an element based on conditional expression
+
+```ng-show="person.email"``` - Example ng-show
+```ng-hide="!person.email"``` - Example ng-hide
+_____________________________________
+
+```ng-repeat``` - This directive lets you iterate over a collection and display one or more elements for each instance
+
+```html
+<div ng-repeat="person in people track by person.id">
+	<div contact-card="person"></div>
+</div>
+
+<p class="line-item" ng-repeat="(food, cost) in receipt">
+	<span class="item">{{food}}</span>
+	<span class="cost">${{cost}}</span>
+</p>
+```
+
+### Using the Link Function
+
+```html
+<input datepicker datepicker-format="mm-dd-yy"/>
+```
+
+```javascript
+angular.module('treehouseCourse' [])
+	.directive('datepicker', function(){
+		return {
+			link: function($scope, $element, $attrs) {
+				var isInitialized = false;
+
+				$attrs.$observe('datepickerFormat', function(newValue) {
+					if (isInitialized) {
+						$element.datepicker('option', 'dateFormat', newValue);
+					}
+
+					else if (newValue) {
+						$element.datepicker({
+							dateFormat: newValue
+						});
+						isInitialized = true;
+					}
+				});
+
+				/* Another example
+				$element.datepicker({
+					dateFormat: $attrs.datepickerFormat
+				});
+				*/
+			}
+		}
+	});
+```
+
+## Extending Inputs
+
+### A Deeper Dive into ```ng-model```
+
+**NgModelController** - Connection (API) between custom logic and our own directive and the value property that we're binding to. We can get access to the controllers within directives using the ```require``` property.
+
+The require property allows that any custom input created will have a require ngModel on its directive definition object.
+
+What does NgModelController provide?
+* ```$setViewValue``` Method
+* ```$render``` Method
+* ```$parsers```
+* ```$formatters```
+
+#### ```$setViewValue```
+
+Value that is used to pass along any data changes that come from our input. Almost always triggered as part of an event listener.
+
+Why don't we just set the property directly? Using ```$setViewValue``` insures our data has gone through the full pipeline. Including validation and possibly transformations.
+
+#### ```$render```
+
+Control data flowing in the opposite direction - to the user.
+
+It is simply defined and ```ngModel``` calls it every time data changes somewhere else.
+
+For example: Two fields bound to same property (start date)
+* Custom datepicker
+* Standard Text Field
+
+We want to update the datepicker to highlight the currently selected date. When ```$render``` is called with new value - we can pass that along to the datepicker as well.
+
+```$render``` receives a value that's been fully processed by the ngModel pipeline.
+
+#### ```$parsers```
+
+It is an array of functions that translates the value that comes from the view. Often passed in via ```$setViewValue```
+
+For most inputs, like a text field, this step is unnecessary becaust both the view and model have the same value.
+However, for a datepicker - we want to store it in a precise way like milliseconds or standard iso 8601 format.
+
+Can also be used for validation - proper email formatting or making sure date selected is in a specified range.
+
+#### ```$formatters```
+
+Allows to take the original model value and transform it into what we want to display to our end user. (Generally if a parser is set up, a formatter will also be needed, unless the parser is only used for validity)
+
+### Attaching a Datepicker
+
+```html
+<div class="main">
+	<div class="my-picker">
+		<h3>Date Picker</h3>
+		<label>
+			Date: {{course.date}}
+			<div datepicker datepicker-format="mm-dd-yy" ng-model="course.date"></div>
+		</label>
+	</div>
+	<div class="other-picker">
+		<h4>Select a date:</h4>
+		<select ng-model="course.date">
+			<option value="01-01-2014">01-01-2014</option>
+			<option value="10-31-2014">10-31-2014</option>
+			<option value="12-31-2014">12-31-2014</option>
+		</select>
+	</div>
+</div>
+```
+
+```javascript
+angular.module('treehouseCourse', [])
+	.directive('datepicker', function(){
+		return {
+			require: 'ngModel', // Require the ngModel Controller
+			link: function($scope, $element, $attrs, ngModelCtrl) {
+				console.log(ngModelCtrl);
+				var initializedDatepicker = false;
+				$attrs.observe('datepickerFormat', function(newValue) {
+					// If we've already initialized this, just update option
+					if (initializedDatepicker) {
+						$element.datepicker('option', 'dateFormat', newValue);
+					// $observe is still called immediately, even if there's no initial value
+					// so we check to confirm there's at least one format set
+					}
+
+					else if (newValue) {
+						$element.datepicker({
+							dateFormat: newValue,
+							onSelect: function(date) {
+								$scope.$apply(function(){
+									ngModelCtrl.$setViewValue(date);
+								})
+							}
+						});
+						initializedDatepicker = true;
+					}
+				});
+
+				ngModelCtrl.$render = function() {
+					$element.datepicker('setDate', ngModelCtrl.$viewValue);
+				};
+			}
+		}
+	});
+```
