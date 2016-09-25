@@ -1,65 +1,29 @@
 // Problem: Need simple way to look at a user's badge count and JS points
 
-// Solution: Use Node.js to connect to Treehouse's API to get profile information
-// to print out
-var http = require('http');
+const https = require('https')
 
-//Print out message
 function printMessage(username, badgeCount, points) {
-  var message = username + " has " + badgeCount + " total badge(s) and " + points + " points in JavaScript.";
-  console.log(message);
+  return `${username} has ${badgeCount} total badge(s) and ${points} in JavaScript`
 }
 
-//Print out error
 function printError(error) {
-  console.error(error.message);
+  console.log(error.message)
 }
 
-function get(username) {
-  // Connect to the API URL: http://teamtreehouse.com/username.json
-  var request = http.get('http://teamtreehouse.com/'+username+'.json', function(response) {
-    var body = '';
+const username = 'andrewcousineau123'
+const request = https.get(`https://teamtreehouse.com/${username}.json`, function(response) {
+  let body = ''
+  response.on('data', function(chunk) {
+    body += chunk
+  })
+  response.on('end', function() {
+    try {
+      const profile = JSON.parse(body)
+    } catch(error) {
+      printError(error)
+    }
+    console.log(printMessage(username, profile.badges.length, profile.points.JavaScript))
+  })
+})
 
-    // Read data from response
-    response.on('data', function(chunk){
-      body += chunk;
-    });
-
-    response.on('end', function(){
-
-      if (response.statusCode === 200) {
-        try {
-          // Parse the data
-          var profile = JSON.parse(body);
-
-          var badgeCount = profile.badges.length;
-          var points = profile.points.JavaScript;
-
-          // Print the data out
-          printMessage(profile.name, badgeCount, points);
-        }
-
-        catch (error) {
-          // Parse Error
-          printError(error);
-        }
-      }
-
-      else {
-        //Status Code Error
-        printError({message:  'There was an error getting the profile for ' +
-                    username +
-                    ". (" +
-                    http.STATUS_CODES[response.statusCode] +
-                    ")"
-        });
-      }
-    });
-
-  });
-
-  // Connection Error
-  request.on('error', printError);
-}
-
-module.exports.get = get;
+request.on('error', printError)
